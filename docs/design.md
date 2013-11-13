@@ -19,9 +19,9 @@ Goals of Huntr include:
 
 * An **email** is a message from Anne Hunter.
 * A **listing** is a processed email. Listings with a date/time are called **events**, and listings become **archived** after a predetermined period of time.
-* A user can *filter* the listings by pre-determined categories.
-* A user can *search* the listings for any desired string.
-* A *subscription* allows a user to save listings of interest.
+* A user can **filter** the listings by pre-determined categories.
+* A user can **search** the listings for any desired string.
+* A **subscription** allows a user to save listings of interest.
 
 ### Data model
 
