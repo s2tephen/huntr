@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Proj4::Application.load_tasks
+Huntr::Application.load_tasks
