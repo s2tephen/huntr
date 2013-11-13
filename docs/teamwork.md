@@ -1,4 +1,4 @@
-# Team Work Plan
+# Teamwork
 ## Stakeholders
 
 * **MIT Community** - These are our “users.”  They are the main beneficiaries of this project.  They will use Huntr to easily browse eecs-jobs-announce emails and to add events to their own calendars.
