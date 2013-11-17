@@ -7,6 +7,16 @@
 	height: 150px;
 }
 
+.listing_name {
+	font-weight: bold;
+	font-size: 10;
+	text-align: left;
+}
+
+.listing_info {
+	font-size: 8;
+	text-align: justify;
+}
 .section-header{
 	border-style: solid;
 }
@@ -19,4 +29,13 @@
 .table-border {
 	border-style: solid;
 	border-color: blue;
+}
+
+.rt_btn {
+	background-color: lightgreen;
+	float: right;
+}
+
+.header_text {
+	font-size: medium;
 }

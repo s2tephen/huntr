@@ -6,27 +6,25 @@
   <div class='row'>
     <div class='col-md-4'>
       <div class='row section-header'>
-        <div class='col-md-8'>SUBSCRIPTIONS</div>
+        <div class='col-md-8 header_text'>FAVORITES</div>
         <div class='col-md-4'>
-          <div class='showsubs' id='subsbutton'> hide </div>
+          <div class='showfavs rt_btn btn btn-default' id='favsbutton'> hide </div>
         </div>
       </div>
-      <div class='row' id='subslist'><%= render 'listingssummary' %></div>
+      <div class='row' id='favslist'><%= render 'listingssummary' %></div>
 
       <br/>
       <div class='row section-header' name='listings'>
-        <div class='col-md-8'> FEED </div>
+        <div class='col-md-8 header_text'> FEED </div>
         <div class='col-md-4'>
-          <div class='feedall' id='feedbutton'>View Archive></div>
+          <div class='feedall rt_btn btn btn-default' id='feedbutton'>View Archive</div>
         </div>
           <div class="col-md-6 input-group input-group-sm">
             <span class="input-group-addon glyphicon glyphicon-search"></span>
             <input type="text" class="form-control">
           </div>
-          <div class="colo-md-6"><button class="btn btn-default">Search</button></div>
+          <div class="colo-md-6"><button class="rt_btn btn btn-default">Search</button></div>
         
-
-        <div id='subslist'><%= render 'listingssummary' %></div>
       </div>
       <div class='row' id='feedlist'><%= render 'listingssummary' %></div>
 
@@ -34,11 +32,16 @@
 
 
     <div class='col-md-8'>
-      <div class='calendarview' id='calendar'> insert calendar here</div>
-      <div class='listingview' id='listingdetail'> insert listing info here</div>
+      <div class='row section header'>
+        <div class='calendarview' id='calendar'> insert calendar here</div>
+      </div>
+      <div class='container listingview' id='listingdetail'>
+        <%= render 'listingdetail' %>
+      </div>
     </div>
   </div>
 
+  <br/>
   <div class='row stats-bar'>
     <div class='col-md-12'>huntr stats bar</div>
   </div>
