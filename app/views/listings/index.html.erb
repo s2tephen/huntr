@@ -18,6 +18,13 @@
           <div class='feedall' id='feedbutton'><%= link_to 'view archive', :controller => :listings, :action => :archive %></div>
         </div>
 
+          <div class="col-md-6 input-group input-group-sm">
+            <span class="input-group-addon glyphicon glyphicon-search"></span>
+            <input type="text" class="form-control">
+          </div>
+          <div class="colo-md-6"><button class="btn btn-default">Search</button></div>
+        
+
         <div id='subslist'><%= render 'listingssummary' %></div>
       </div>
     </div>
