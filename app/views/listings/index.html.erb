@@ -8,7 +8,7 @@
       <div class='row section-header'>
         <div class='col-md-8'>SUBSCRIPTIONS</div>
         <div class='col-md-4'>
-          <button class='showsubs' id='subsbutton'> hide </button>
+          <div class='showsubs' id='subsbutton'> hide </div>
         </div>
       </div>
       <div class='row' id='subslist'><%= render 'listingssummary' %></div>
@@ -17,10 +17,10 @@
       <div class='row section-header' name='listings'>
         <div class='col-md-8'> FEED </div>
         <div class='col-md-4'>
-          <div class='feedall' id='feedbutton'><%= link_to 'view archive', :controller => :listings, :action => :archive %></div>
+          <div class='feedall' id='feedbutton'>View Archive></div>
         </div>
       </div>
-      <div class='row' id='subslist'><%= render 'listingssummary' %></div>
+      <div class='row' id='feedlist'><%= render 'listingssummary' %></div>
 
     </div>
 
