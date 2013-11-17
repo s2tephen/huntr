@@ -1,6 +1,6 @@
 Huntr::Application.routes.draw do
   devise_for :users
-  resources :listings, only: [:show, :display_all, :display_archive]
+  resources :listings
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -8,8 +8,8 @@ Huntr::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root :to => 'listings#index'
 
-  get "archive"  => "listings#archives",    :as => "archive"
-  get "all"  => "listings#archives",    :as => "all"
+  match "display_archive", to: "listings#display_archive", via: :get
+  match "display_all", to: "listings#display_all", via: :get
 
 
   # Example of regular route:

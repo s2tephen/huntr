@@ -8,15 +8,24 @@ $(document).ready((function() {
 
 	//toggle archive/all for feed
 	$('#feedbutton').click(function(){
-		console.log("hiiii");
 		if ($(this).hasClass('feedall')){
 			$(this).removeClass('feedall');
 			$(this).text('view all');
-			$.ajax('/listings/display_archive');
+			$.ajax({
+				url: 'display_archive',
+				success: function(result){
+					$('#feedlist').html(result);
+				}
+			});
 		} else {
 			$(this).addClass('feedall');
 			$(this).text('view archive');
-			$.ajax('/listings/display_all');
+			$.ajax({
+				url: 'display_all',
+				success: function(result){
+					$('#feedlist').html(result);
+				}
+			});
 		}
 	});
 

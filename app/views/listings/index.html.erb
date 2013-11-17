@@ -38,18 +38,7 @@
         
       </div>
       <div class='row listingcontainer' id='feedlist'>
-        <% @listings.each do |listing| %>
-        <div class='col-md-12 btn btn-default listingarea'>
-          <div class='row'>
-            <div class='col-md-12 listing-name' id='listingname'><%= listing.name %></div>
-          </div>
-          <div class='row'> 
-            <div class='col-md-6 listing-info'><%= listing.updated_at %></div>
-            <div class='col-md-6 listing-info'><%= listing.category %></div>
-          </div>
-        </div>
-
-        <% end %>
+        <%= render 'listingssummary' %>
       </div>
 
     </div>
@@ -59,8 +48,7 @@
       <div class='row section header'>
         <div class='calendarview' id='calendar'> insert calendar here</div>
       </div>
-      
-      <%= render 'listingdetail' %>
+      <!-- ajax display listing detail?-->
     </div>
   </div>
 
