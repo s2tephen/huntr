@@ -1,6 +1,9 @@
-(function() {
+//Primary Author: Yinfu
+
+$(document).ready((function() {
 
 	$('#feedbutton').click(function(){
+		console.log("hiiii");
 		if ($(this).hasClass('feedall')){
 			$(this).removeClass('feedall');
 			$(this).text('view all');
@@ -41,4 +44,4 @@
 	$('#listingdetail').addClass('listingview');
 	*/
 
-})();
+}));

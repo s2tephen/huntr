@@ -3,11 +3,11 @@ class ListingsController < ApplicationController
 
   #ajax call to get archived listings
   def display_archive
-    @current_user.display_archive
+    current_user.display_archive
   end
 
   def display_all
-    @current_user.display_all
+    current_user.display_all
   end
 
   # GET /listings
