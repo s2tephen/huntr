@@ -1,0 +1,8 @@
+<div class='listingcontainer'>
+  <% @listsings.each do |listing| %>
+  <div class='row'><%= listing.name %></div>
+  <div class='row'> 
+    <div class='col-md-4'><%= listing.updated_at %></div>
+    <div class='col-md-8'><%= listing.category %></div>
+  </div>
+</div>

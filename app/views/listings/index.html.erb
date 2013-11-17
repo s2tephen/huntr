@@ -1,37 +1,35 @@
 <h1>Listing listings</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Time</th>
-      <th>Location</th>
-      <th>Body</th>
-      <th>Category</th>
-      <th>Archived</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @listings.each do |listing| %>
-      <tr>
-        <td><%= listing.name %></td>
-        <td><%= listing.time %></td>
-        <td><%= listing.location %></td>
-        <td><%= listing.body %></td>
-        <td><%= listing.category %></td>
-        <td><%= listing.archived %></td>
-        <td><%= link_to 'Show', listing %></td>
-        <td><%= link_to 'Edit', edit_listing_path(listing) %></td>
-        <td><%= link_to 'Destroy', listing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
 <br>
 
-<%= link_to 'New Listing', new_listing_path %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-4'>
+      <div class='row'>
+        <div class='col-md-6'>SUBSCRIPTIONS</div>
+        <div class='col-md-6'>
+          <button class='showsubs' id='subsbutton'> hide </button>
+        </div>
+      </div>
+
+      <div class='row' name='listings'>
+        <div class='col-md-6'> FEED </div>
+        <div class='col-md-6'>
+          <div class='feedall' id='feedbutton'><%= link_to 'view archive', :controller => :listings, :action => :archive %></div>
+        </div>
+
+        <div id='subslist'><%= render 'listingssummary' %></div>
+      </div>
+    </div>
+
+
+    <div class='col-md-8'>
+      <div class='calendarview' id='calendar'> insert calendar here</div>
+      <div class='listingview' id='listingdetail'> insert listing info here</div>
+    </div>
+  </div>
+
+  <div class='row'>
+    <div>huntr stats bar</div>
+  </div>
+</div>
