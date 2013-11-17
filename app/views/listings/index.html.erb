@@ -1,29 +1,26 @@
-<h1>Listing listings</h1>
-
-<br>
-
+<!--Primary Author: Yinfu -->
 <div class='container'>
   <div class='row'>
     <div class='col-md-4'>
       <div class='row section-header'>
-        <div class='col-md-8 header_text'>FAVORITES</div>
+        <div class='col-md-8 header-text'>FAVORITES</div>
         <div class='col-md-4'>
-          <div class='showfavs rt_btn btn btn-default' id='favsbutton'> hide </div>
+          <div class='showfavs rt-btn btn btn-default' id='favsbutton'> hide </div>
         </div>
       </div>
       <div class='row' id='favslist'><%= render 'listingssummary' %></div>
 
       <br/>
       <div class='row section-header' name='listings'>
-        <div class='col-md-8 header_text'> FEED </div>
+        <div class='col-md-8 header-text'> FEED </div>
         <div class='col-md-4'>
-          <div class='feedall rt_btn btn btn-default' id='feedbutton'>View Archive</div>
+          <div class='feedall rt-btn btn btn-default' id='feedbutton'>View Archive</div>
         </div>
           <div class="col-md-6 input-group input-group-sm">
             <span class="input-group-addon glyphicon glyphicon-search"></span>
             <input type="text" class="form-control">
           </div>
-          <div class="colo-md-6"><button class="rt_btn btn btn-default">Search</button></div>
+          <div class="col-md-6"><button class="rt-btn btn btn-default">Search</button></div>
         
       </div>
       <div class='row' id='feedlist'><%= render 'listingssummary' %></div>
@@ -35,9 +32,8 @@
       <div class='row section header'>
         <div class='calendarview' id='calendar'> insert calendar here</div>
       </div>
-      <div class='container listingview' id='listingdetail'>
-        <%= render 'listingdetail' %>
-      </div>
+      
+      <%= render 'listingdetail' %>
     </div>
   </div>
 
