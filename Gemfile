@@ -12,6 +12,10 @@ gem "simple_form"
 # Use devise for users/permissions
 gem 'devise'
 
+# For text searching in database
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
