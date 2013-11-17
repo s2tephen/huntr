@@ -2,6 +2,11 @@
 
 $(document).ready((function() {
 
+	//initialize listing detail view to be hidden
+	$('#listingdetail').slideUp();
+	$('#listingdetail').removeClass('listingview');
+
+	//toggle archive/all for feed
 	$('#feedbutton').click(function(){
 		console.log("hiiii");
 		if ($(this).hasClass('feedall')){
@@ -15,6 +20,7 @@ $(document).ready((function() {
 		}
 	});
 
+	//toggle show/hide for favorites
 	$('#favsbutton').click(function(){
 		if ($(this).hasClass('showfavs')) {
 			$('#favslist').slideUp();
@@ -26,11 +32,8 @@ $(document).ready((function() {
 			$(this).text('hide');
 		}
 	});
-	$('#listingdetail').slideUp();
-	$('#listingdetail').removeClass('listingview');
 
-	
-	//TODO: need action that swaps calendar view and listing view
+	//show calendar
 	$('#viewcal').click(function(){
 		$('#listingdetail').slideUp();
 		$('#listingdetail').removeClass('listingview');
@@ -38,12 +41,14 @@ $(document).ready((function() {
 		$('#calendar').addClass('calendarview');
 	});
 
-	/*
-	//if listingViewAction:
-	$('#calendar').slideUp();
-	$('#calendar').removeClass('calendarview');
-	$('#listingdetail').slideDown();
-	$('#listingdetail').addClass('listingview');
-	*/
+	//show listing detail
+	$('#listingarea').click(function(){
+		//insert ajax to do following line
+		//@listing = Listing.find_by_name($(this.children('#listingname').text()))
+		$('#calendar').slideUp();
+		$('#calendar').removeClass('calendarview');
+		$('#listingdetail').slideDown();
+		$('#listingdetail').addClass('listingview');
+	});
 
 }));
