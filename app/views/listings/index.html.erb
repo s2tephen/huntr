@@ -32,8 +32,12 @@
 
 
     <div class='col-md-8'>
-      <div class='calendarview' id='calendar'> insert calendar here</div>
-      <div class='listingview' id='listingdetail'> insert listing info here</div>
+      <div class='row section header'>
+        <div class='calendarview' id='calendar'> insert calendar here</div>
+      </div>
+      <div class='container listingview' id='listingdetail'>
+        <%= render 'listingdetail' %>
+      </div>
     </div>
   </div>
 
