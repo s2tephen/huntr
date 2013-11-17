@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   # Only allow mit.edu addresses
   validates_format_of :email, :with => /\A([^@\s]+)@([A-z].)?(mit.edu)\Z/, :on => :create
 
+  has_and_belongs_to_many :favorites, class_name: "Listing", join_table: "users_favorites"
   
   def display_archive
   	@listings=Listing.where(:archived => true)
