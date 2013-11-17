@@ -1,12 +1,13 @@
 class ListingsController < ApplicationController
   #before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-  #method to get archived listings
-  #fix to use ajax!!
-  def archive
-    @listings= Listing.where(:archived => true)
-    redirect_to root
-    #TODO: do some ajax here
+  #ajax call to get archived listings
+  def display_archive
+    @current_user.display_archive
+  end
+
+  def display_all
+    @current_user.display_all
   end
 
   # GET /listings
