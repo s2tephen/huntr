@@ -8,7 +8,21 @@
           <div class='showfavs rt-btn btn btn-default' id='favsbutton'> hide </div>
         </div>
       </div>
-      <div class='row' id='favslist'><%= render 'listingssummary' %></div>
+      <div class='row listingcontainer' id='favslist'>
+        <% @favorites.each do |listing| %>
+        <div class='col-md-12 btn btn-default listingarea'>
+          <div class='row'>
+            <div class='col-md-12 listing-name' id='listingname'><%= listing.name %></div>
+          </div>
+          <div class='row'> 
+            <div class='col-md-6 listing-info'><%= listing.updated_at %></div>
+            <div class='col-md-6 listing-info'><%= listing.category %></div>
+          </div>
+        </div>
+
+        <% end %>
+
+      </div>
 
       <br/>
       <div class='row section-header' name='listings'>
@@ -16,14 +30,27 @@
         <div class='col-md-4'>
           <div class='feedall rt-btn btn btn-default' id='feedbutton'>View Archive</div>
         </div>
-          <div class="col-md-6 input-group input-group-sm">
-            <span class="input-group-addon glyphicon glyphicon-search"></span>
-            <input type="text" class="form-control">
-          </div>
-          <div class="col-md-6"><button class="rt-btn btn btn-default">Search</button></div>
+        <div class="col-md-6 input-group input-group-sm">
+          <span class="input-group-addon glyphicon glyphicon-search"></span>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-md-6"><button class="rt-btn btn btn-default">Search</button></div>
         
       </div>
-      <div class='row' id='feedlist'><%= render 'listingssummary' %></div>
+      <div class='row listingcontainer' id='feedlist'>
+        <% @listings.each do |listing| %>
+        <div class='col-md-12 btn btn-default listingarea'>
+          <div class='row'>
+            <div class='col-md-12 listing-name' id='listingname'><%= listing.name %></div>
+          </div>
+          <div class='row'> 
+            <div class='col-md-6 listing-info'><%= listing.updated_at %></div>
+            <div class='col-md-6 listing-info'><%= listing.category %></div>
+          </div>
+        </div>
+
+        <% end %>
+      </div>
 
     </div>
 

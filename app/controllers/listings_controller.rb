@@ -13,6 +13,7 @@ class ListingsController < ApplicationController
   # GET /listings
   # GET /listings.json
   def index
+    @favorites = current_user.favorites
     @listings = Listing.where(:archived => false)
   end
 
