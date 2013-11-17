@@ -42,7 +42,7 @@ $(document).ready((function() {
 	});
 
 	//show listing detail
-	$('#listingarea').click(function(){
+	$('.listingarea').click(function(){
 		//insert ajax to do following line
 		//@listing = Listing.find_by_name($(this.children('#listingname').text()))
 		$('#calendar').slideUp();
