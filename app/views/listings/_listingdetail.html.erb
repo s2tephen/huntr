@@ -1,0 +1,21 @@
+<div class='row'>
+  <div class='col-md-6 section header'> LISTING </div>
+  <div class='col-md-6 rt-btn btn btn-default' id='viewcal'> Back to Calendar </div>
+</div>
+<% if @listing != nil %>
+<div class='showlisting'>
+  <div class='row listingbody'>
+    blahblahblah
+  </div>
+  <div class='row'>
+    <div class='col-md-6 eventmap'>insert map</div>
+    <div class='col-md-6 eventdetails'>
+      <div>Event Details</div>
+      <div>Time: <%= @listing.time %></div>
+      <div>Location: <%= @listing.location %></div>
+      <div>Sponsor(s): <% @listing.sponsor %></div>
+      <div class='btn btn-default'>+ Add to Calendar</div>
+    </div>
+  </div>
+</div>
+<% end %>

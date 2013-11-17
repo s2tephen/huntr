@@ -29,14 +29,16 @@ $(document).ready((function() {
 	$('#listingdetail').slideUp();
 	$('#listingdetail').removeClass('listingview');
 
-	/*
+	
 	//TODO: need action that swaps calendar view and listing view
-	//if calendarViewAction:
-	$('#listingdetail').slideUp();
-	$('#listingdetail').removeClass('listingview');
-	$('#calendar').slideDown();
-	$('#calendar').addClass('calendarview');
+	$('#viewcal').click(function(){
+		$('#listingdetail').slideUp();
+		$('#listingdetail').removeClass('listingview');
+		$('#calendar').slideDown();
+		$('#calendar').addClass('calendarview');
+	});
 
+	/*
 	//if listingViewAction:
 	$('#calendar').slideUp();
 	$('#calendar').removeClass('calendarview');
