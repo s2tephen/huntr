@@ -1,12 +1,12 @@
 <div class='listingcontainer'>
 	<% @listings.each do |listing| %>
-	<div class='container'>
+	<div class='table-border col-md-12 btn-info'>
 		<div class='row'>
-			<div class='col-md-4'><%= listing.name %></div>
+			<div class='col-md-12'><%= listing.name %></div>
 		</div>
 		<div class='row'> 
-			<div class='col-md-2'><%= listing.updated_at %></div>
-			<div class='col-md-1'><%= listing.category %></div>
+			<div class='col-md-6'><%= listing.updated_at %></div>
+			<div class='col-md-6'><%= listing.category %></div>
 		</div>
 	</div>
 	<% end %>
