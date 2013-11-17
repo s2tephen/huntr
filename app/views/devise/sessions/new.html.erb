@@ -1,17 +1,29 @@
-<h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+<!--Primary Authors: Yinfu, Stephen-->
+<div class='container'>
+	<div class='row'>
+ 		<div class='col-md-6'>
+			<h2>Sign in</h2>
+			<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			  <div><%= f.label :email %><br />
+			  <%= f.email_field :email, :autofocus => true %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+			  <div><%= f.label :password %><br />
+			  <%= f.password_field :password %></div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
+			  <% if devise_mapping.rememberable? -%>
+			    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+			  <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
+			  <div><%= f.submit 'Sign in', class: 'btn btn-block' %></div>
+			<% end %>
+			<%= button_to 'Forgot your password?', new_password_path(resource_name, method: :get), class: 'btn btn-block' %><br />
+		</div>
 
-<%= render "devise/shared/links" %>
+		<div class='col-md-6'>
+			<%= render :file => 'devise/registrations/new' %>
+		</div>
+	</div>
+</div>
+
+

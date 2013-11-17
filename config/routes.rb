@@ -8,6 +8,8 @@ Huntr::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root :to => 'listings#index'
 
+  get 'listings/archive' => 'listings#archive'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
