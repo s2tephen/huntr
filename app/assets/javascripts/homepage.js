@@ -15,14 +15,14 @@ $(document).ready((function() {
 		}
 	});
 
-	$('#subsbutton').click(function(){
-		if ($(this).hasClass('showsubs')) {
-			$('#subslist').slideUp();
-			$(this).removeClass('showsubs');
+	$('#favsbutton').click(function(){
+		if ($(this).hasClass('showfavs')) {
+			$('#favslist').slideUp();
+			$(this).removeClass('showfavs');
 			$(this).text('show');
 		} else {
-			$('#subslist').slideDown();
-			$(this).addClass('showsubs');
+			$('#favslist').slideDown();
+			$(this).addClass('showfavs');
 			$(this).text('hide');
 		}
 	});
