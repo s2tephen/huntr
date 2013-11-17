@@ -5,6 +5,26 @@ class Listing < ActiveRecord::Base
     text :name, :location, :body
   end
   
+  def self.fetch
+    Mail.defaults do
+      retriever_method :pop3, { :address    => "pop.gmail.com",
+                                :port       => 995,
+                                :user_name  => ENV["GMAIL_USERNAME"],
+                                :password   => ENV["GMAIL_PASSWORD"],
+                                :enable_ssl => true }
+    end
+
+    Mail.all.each do |e|
+      Listing.find_or_create_by(name: e.subject[21..-1]) do |l|
+        # TODO: time, location
+        l.body = e.parts[0].parts[0].decoded
+        # TODO: category
+        l.archived = false
+        # TODO: food
+      end
+    end
+  end
+
 	def display_archive
 		@listings=Listing.where(:archived => true)
 	end
