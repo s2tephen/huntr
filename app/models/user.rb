@@ -8,12 +8,5 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /\A([^@\s]+)@([A-z].)?(mit.edu)\Z/, :on => :create
 
   has_and_belongs_to_many :favorites, class_name: "Listing", join_table: "users_favorites"
-  
-  def display_archive
-  	@listings=Listing.where(:archived => true)
-  end
 
-  def display_all
-  	@listings=Listing.where(:archived => false)
-  end
 end

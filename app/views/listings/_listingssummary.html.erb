@@ -1,13 +1,12 @@
-<div class='listingcontainer'>
-	<% @listings.each do |listing| %>
-	<div class='col-md-12 btn btn-default listingarea'>
-		<div class='row'>
-			<div class='col-md-12 listing-name' id='listingname'><%= listing.name %></div>
-		</div>
-		<div class='row'> 
-			<div class='col-md-6 listing-info'><%= listing.updated_at %></div>
-			<div class='col-md-6 listing-info'><%= listing.category %></div>
-		</div>
-	</div>
-	<% end %>
+<% @listings.each do |listing| %>
+<div class='col-md-12 btn btn-default listingarea'>
+  <div class='row'>
+    <div class='col-md-12 listing-name' id='listingname'><%= listing.name %></div>
+  </div>
+  <div class='row'> 
+    <div class='col-md-6 listing-info'><%= listing.updated_at %></div>
+    <div class='col-md-6 listing-info'><%= listing.category %></div>
+  </div>
 </div>
+
+<% end %>
