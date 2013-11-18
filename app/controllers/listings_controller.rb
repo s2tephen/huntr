@@ -6,10 +6,14 @@ class ListingsController < ApplicationController
    
   def display_archive
     @listings=Listing.where(:archived => true)
+    render :layout => false
+    #render :layout => "archive.html.erb"
   end
 
   def display_all
     @listings=Listing.where(:archived => false)
+    render :layout => false
+    #render :layout => "archive.html.erb"
   end
 
   # GET /listings

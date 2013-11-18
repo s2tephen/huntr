@@ -7,28 +7,32 @@ $(document).ready((function() {
 	$('#listingdetail').removeClass('listingview');
 
 	//toggle archive/all for feed
-	$('#feedbutton').click(function(){
-		if ($(this).hasClass('feedall')){
-			$(this).removeClass('feedall');
-			$(this).text('view all');
-			$.ajax({
-				url: 'display_archive',
-				success: function(result){
-					$('#feedlist').html(result);
-				}
-			});
-		} else {
-			$(this).addClass('feedall');
-			$(this).text('view archive');
-			$.ajax({
-				url: 'display_all',
-				success: function(result){
-					$('#feedlist').html(result);
-				}
-			});
-		}
+	$('#archivebutton').click(function(){
+		console.log("archivebutton clicked");
+		$(this).hide();
+		$('#feedbutton').show();
+		$.ajax({
+			url: 'display_archive',
+			success: function(result){
+				$('#feedlist').html(result);
+			}
+		});
+		$('#feedbutton').unbind();
 	});
-
+	
+	$('#feedbutton').click(function(){
+		console.log("feedbutton clicked");
+		$(this).hide();
+		$('#archivebutton').show();
+		$.ajax({
+			url: 'display_all',
+			success: function(result){
+				$('#feedlist').html(result);
+			}
+		});
+		$('#archivebutton').unbind();
+	});
+	
 	//toggle show/hide for favorites
 	$('#favsbutton').click(function(){
 		if ($(this).hasClass('showfavs')) {
