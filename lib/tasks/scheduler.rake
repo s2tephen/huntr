@@ -1,5 +1,5 @@
 desc 'This task polls the mail server'
-task :poll do
+task :mail do
   puts 'Fetching new mail...'
   Listing.fetch
   puts 'done.'
