@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use postgres for db
-gem 'pg'
+gem 'pg', '0.17.0'
 
 # Precompile assets for heroku
 group :production do
