@@ -1,65 +1,69 @@
 //Primary Author: Yinfu
 
 $(document).ready((function() {
-	//initialize listing detail view to be hidden
-	$('#listingdetail').slideUp();
-	$('#listingdetail').removeClass('listingview');
+  //initialize listing detail view to be hidden
+  $('#listingdetail').slideUp();
+  $('#listingdetail').removeClass('listingview');
 
-	//toggle archive/all for feed
-	$('#archivebutton').click(function(){
-		console.log("archivebutton clicked");
-		$(this).hide();
-		$('#feedbutton').show();
-		$.ajax({
-			url: 'display_archive',
-			success: function(result){
-				$('#feedlist').html(result);
-			}
-		});
-		$('#feedbutton').unbind();
-	});
-	
-	$('#feedbutton').click(function(){
-		console.log("feedbutton clicked");
-		$(this).hide();
-		$('#archivebutton').show();
-		$.ajax({
-			url: 'display_all',
-			success: function(result){
-				$('#feedlist').html(result);
-			}
-		});
-		$('#archivebutton').unbind();
-	});
-	
-	//toggle show/hide for favorites
-	$('#favsbutton').click(function(){
-		if ($(this).hasClass('showfavs')) {
-			$('#favslist').slideUp();
-			$(this).removeClass('showfavs');
-			$(this).text('show');
-		} else {
-			$('#favslist').slideDown();
-			$(this).addClass('showfavs');
-			$(this).text('hide');
-		}
-	});
+  //toggle archive/all for feed
+  $('#archivebutton').click(function(){
+    console.log('archivebutton clicked');
+    $(this).hide();
+    $('#feedbutton').show();
+    $.ajax({
+      url: 'display_archive',
+      success: function(result){
+        $('#feedlist').html(result);
+      }
+    });
+    $('#feedbutton').unbind();
+  });
+  
+  $('#feedbutton').click(function(){
+    console.log('feedbutton clicked');
+    $(this).hide();
+    $('#archivebutton').show();
+    $.ajax({
+      url: 'display_all',
+      success: function(result){
+        $('#feedlist').html(result);
+      }
+    });
+    $('#archivebutton').unbind();
+  });
+  
+  //toggle show/hide for favorites
+  $('#favsbutton').click(function(){
+    if ($(this).hasClass('showfavs')) {
+      $('#favslist').slideUp();
+      $(this).removeClass('showfavs');
+      $(this).text('show');
+    } else {
+      $('#favslist').slideDown();
+      $(this).addClass('showfavs');
+      $(this).text('hide');
+    }
+  });
 
-	//show calendar
-	$('#viewcal').click(function(){
-		$('#listing').slideUp();
-		$('#calendar').slideDown();
-	});
+  //show calendar
+  $('#viewcal').click(function(){
+    $('#listing').fadeOut(650, $('#calendar').fadeIn(650));
+  });
 
-	//show listing detail
-	$('.listing-area').click(function(){
-		//insert ajax to do following line
-		var listing_id = $(this).attr('id').split("-")[1];
-		$('#calendar').slideUp();
-		$('#listing').load("listings/" + listing_id).slideDown();
-	});
+  //show listing detail
+  $('.listing-area').click(function(){
+    //insert ajax to do following line
+    var listing_id = $(this).attr('id').split('-')[1];
+    $('#listing').removeClass('showscale').addClass('make_transist').addClass('hidescale');
+    setTimeout(function() {
+      $.get( 'listings/' + listing_id, function(data) {
+        $('#listing').html(data);
+        $('#listing').removeClass('hidescale').addClass('showscale');
+      });
+    }, 300);
+  });
 
-  $(document).on("ajax:success", '#search_results', function(e, data, status, xhr){
+  $(document).on('ajax:success', '#search_results', function(e, data, status, xhr){
     $('#feedlist').html(xhr.responseText);
   });
 }));
