@@ -1,0 +1,26 @@
+.input-lg {
+	margin-bottom: 10px;
+}
+
+.form-actions {
+	.btn {
+		margin-right: 10px;
+	}
+	.checkbox {
+		float: left;
+		margin: 0;
+		margin-left: 10px;
+		padding-left: 0;
+		margin-top: 5px;
+		label {
+			float: none;
+			&.control-label {
+				margin-left: 10px;
+			}
+			&.checkbox {
+				margin-top: -20px;
+				float: left;
+			}
+		}
+	}
+}
