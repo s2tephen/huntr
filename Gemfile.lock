@@ -29,6 +29,7 @@ GEM
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
     bcrypt-ruby (3.1.2-x86-mingw32)
+    birch (0.0.8)
     bootstrap-sass (3.0.2.1)
       sass (~> 3.2)
     builder (3.1.4)
@@ -47,6 +48,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    font-awesome-rails (4.0.3.0)
+      railties (>= 3.2, < 5.0)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.2)
@@ -64,7 +67,9 @@ GEM
     multi_json (1.8.2)
     orm_adapter (0.5.0)
     pg (0.17.0)
+    pg (0.17.0-x86-mingw32)
     polyglot (0.3.3)
+    progressbar (0.21.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -76,6 +81,11 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0)
       sprockets-rails (~> 2.0.0)
+    rails_12factor (0.0.2)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_serve_static_assets (0.0.1)
+    rails_stdout_logging (0.0.3)
     railties (4.0.0)
       actionpack (= 4.0.0)
       activesupport (= 4.0.0)
@@ -84,11 +94,15 @@ GEM
     rake (10.1.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    rubyzip (1.1.0)
     sass (3.2.12)
     sass-rails (4.0.1)
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    schiphol (0.9.4)
+      progressbar (>= 0.10.0)
+      rubyzip (>= 0.9.6.1)
     sdoc (0.3.20)
       json (>= 1.1.3)
       rdoc (~> 3.10)
@@ -108,6 +122,10 @@ GEM
     thread_safe (0.1.3)
       atomic
     tilt (1.4.1)
+    treat (2.0.7)
+      birch
+      schiphol
+      yomu
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
@@ -119,6 +137,9 @@ GEM
       json (>= 1.8.0)
     warden (1.2.3)
       rack (>= 1.0)
+    yomu (0.1.9)
+      mime-types (~> 1.23)
+    zip (2.0.2)
 
 PLATFORMS
   ruby
@@ -128,13 +149,17 @@ DEPENDENCIES
   bootstrap-sass (~> 3.0.2.0)
   coffee-rails (~> 4.0.0)
   devise
+  font-awesome-rails
   jbuilder (~> 1.2)
   jquery-rails
   mail
   pg
   rails (= 4.0.0)
+  rails_12factor
   sass-rails (~> 4.0.0)
   sdoc
   simple_form
+  treat
   turbolinks
   uglifier (>= 1.3.0)
+  zip

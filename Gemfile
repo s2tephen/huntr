@@ -7,7 +7,9 @@ gem 'rails', '4.0.0'
 gem 'pg'
 
 # Precompile assets for heroku
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end
 
 # Use simple form for login page
 gem 'simple_form'
@@ -30,6 +32,9 @@ gem 'sass-rails', '~> 4.0.0'
 
 # Use Bootstrap as CSS framework
 gem 'bootstrap-sass', '~> 3.0.2.0'
+
+# Use Font Awesome for icon fonts
+gem 'font-awesome-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
