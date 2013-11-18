@@ -1,7 +1,6 @@
 //Primary Author: Yinfu
 
 $(document).ready((function() {
-
 	//initialize listing detail view to be hidden
 	$('#listingdetail').slideUp();
 	$('#listingdetail').removeClass('listingview');
@@ -48,45 +47,20 @@ $(document).ready((function() {
 
 	//show calendar
 	$('#viewcal').click(function(){
-		$('#listingdetail').slideUp();
-		$('#listingdetail').removeClass('listingview');
+		$('#listing').slideUp();
 		$('#calendar').slideDown();
-		$('#calendar').addClass('calendarview');
 	});
 
 	//show listing detail
 	$('.listing-area').click(function(){
 		//insert ajax to do following line
-		//@listing = Listing.find_by_name($(this.children('#listingname').text()))
 		var listing_id = $(this).attr('id').split("-")[1];
-		//$('#calendar').slideUp();
-		$('#calendar').removeClass('calendarview');
-		//$('#listingdetail').slideDown();
-		$('#listingdetail').addClass('listingview');
-		$('#calendar').load("listings/" + listing_id);
+		$('#calendar').slideUp();
+		$('#listing').load("listings/" + listing_id).slideDown();
 	});
-	
-	// execute search
-	// $('#search_results').submit(function() {
-	  // console.log("HELLO")
-	  // $.ajax({
-      // url: 'search_results',
-      // complete: function(result){
-        // $('#feedlist').html(result);
-      // }
-    // });
-	// });
-  $(document).on("ajax:success", '#search_results', function(e, data, status, xhr){
+
+	//execute search
+	$(document).on("ajax:success", '#search_results', function(e, data, status, xhr){
     $('#feedlist').html(xhr.responseText);
   });
-	
-	 // execute search
-  // $('#search_results').submit(function() {  
-      // $.ajax({
-          // url: $(this).attr('action'), //sumbits it to the given url of the form
-      // }).success(function(json){
-          // //act on result.
-      // });
-      // return false; // prevents normal behaviour
-  // });
 }));
