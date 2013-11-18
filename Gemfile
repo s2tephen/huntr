@@ -8,7 +8,7 @@ gem 'rails', '4.0.0'
 gem 'pg'
 
 # Use simple form for login page
-gem "simple_form"
+gem 'simple_form'
 
 # Use devise for users/permissions
 gem 'devise'
@@ -18,6 +18,10 @@ gem 'devise'
 
 # Use mail for interfacing with gmail
 gem 'mail'
+
+# Use treat for NLP
+gem 'zip'
+gem 'treat'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
