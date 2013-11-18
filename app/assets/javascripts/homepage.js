@@ -58,9 +58,14 @@ $(document).ready((function() {
 		$('#calendar').slideUp();
 		$('#listing').load("listings/" + listing_id).slideDown();
 	});
+<<<<<<< Updated upstream
 
 	//execute search
 	$(document).on("ajax:success", '#search_results', function(e, data, status, xhr){
+=======
+	
+  $(document).on("ajax:success", '#search_results', function(e, data, status, xhr){
+>>>>>>> Stashed changes
     $('#feedlist').html(xhr.responseText);
   });
 }));
