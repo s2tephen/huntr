@@ -1,9 +1,7 @@
 class ListingsController < ApplicationController
   #before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-  #ajax call to get archived listings
- 
-   
+  #ajax call to get archived listings  
   def display_archive
     @listings=Listing.where(:archived => true)
     render :layout => false
@@ -14,6 +12,30 @@ class ListingsController < ApplicationController
     @listings=Listing.where(:archived => false)
     render :layout => false
     #render :layout => "archive.html.erb"
+  end
+
+  # search results
+  def search_results
+    @query = params[:query]
+
+    if @query
+      @listings = Listing.basic_search(@query)
+
+      puts "QUERY " + @query
+
+      @listings.each do |l|
+
+        puts l.name
+
+      end
+      puts @listings.length
+
+    else
+      @listings = Listing.all
+
+    end
+    render :layout => false
+
   end
 
   # GET /listings

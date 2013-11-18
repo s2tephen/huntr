@@ -32,6 +32,14 @@
 
 #listing {
 	display: none;
+	padding-left: 15px;
+	h2 {
+		margin-top: 0;
+		font-weight: bold;
+	}
+	p {
+		font-size: 1.1em;
+	}
 }
 
 .table-border {
