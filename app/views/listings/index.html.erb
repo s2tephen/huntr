@@ -1,16 +1,16 @@
 <!--Primary Author: Yinfu -->
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
       <div class="row section-header">
-        <div class="col-md-8 header-text">FAVORITES</div>
-        <div class="col-md-4">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 header-text">FAVORITES</div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
           <div class="showfavs rt-btn btn btn-default" id="favsbutton"> hide </div>
         </div>
       </div>
       <div class="row listing-container" id="favslist">
         <% @favorites.each do |listing| %>
-        <div class="col-md-12 btn btn-default listing-area">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 btn btn-default listing-area">
           <h3 class="listing-name"><%= listing.name %></h3>
           <p class="listing-meta">
             <%= listing.updated_at %>
@@ -24,29 +24,29 @@
 
       <br/>
       <div class="row section-header" name="listings">
-        <div class="col-md-8 header-text"> FEED </div>
-        <div class="col-md-4">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 header-text"> FEED </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
           <div class="feedall rt-btn btn btn-default" id="archivebutton">View Archive</div>
           <div class="feedall rt-btn btn btn-default" style="display:none" id="feedbutton">View All</div>
         </div>
-        <%= form_tag url_for(:controller => 'listings', :action => 'search_results'), :method=>:get, :remote=>true, :id => "search_results" do  %>
-          <div class="col-md-6 input-group input-group-sm">
-              <span class="input-group-addon glyphicon glyphicon-search"></span>
-              <%= text_field_tag :query, params[:query], class: "form-control" %>
-    
-            </div>
-            <div class="col-md-6"><%= submit_tag "Search", :name => nil, class: "rt-btn btn btn-default" %></div>
-            <% end %> 
-          </div>
-      <div class='row listingcontainer' id='feedlist'>
-        <%= render 'listingssummary' %>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 input-group input-group-sm">
+          <span class="input-group-addon glyphicon glyphicon-search"></span>
+          <input type="text" class="form-control">
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><button class="rt-btn btn btn-default">Search</button></div>
+        
       </div>
+      <div class="row listing-container" id="feedlist">
+        <%= render "listingssummary" %>
+      </div>
+
     </div>
 
 
-    <div class="col-md-8">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <div class="row section header">
-        <div class="calendarview" id="calendar"> insert calendar here</div>
+        <div id="calendar">insert calendar here</div>
+        <div id="listing">insert calendar here</div>
       </div>
       <!-- ajax display listing detail?-->
     </div>
@@ -54,6 +54,6 @@
 
   <br/>
   <div class="row footer">
-    &copy; 2013 Huntr • Anne Hunter has sent <%= pluralize(Listing.where(updated_at: Time.now.midnight..Time.now).length, 'email') %> today.
+    &copy; 2013 Huntr <span>•</span> Anne Hunter has sent <%= pluralize(Listing.where(updated_at: Time.now.midnight..Time.now).length, 'email') %> today.
   </div>
 </div>

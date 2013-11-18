@@ -34,7 +34,7 @@ gem 'sass-rails', '~> 4.0.0'
 gem 'bootstrap-sass', '~> 3.0.2.0'
 
 # Use Font Awesome for icon fonts
-#gem 'font-awesome-rails'
+gem 'font-awesome-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'

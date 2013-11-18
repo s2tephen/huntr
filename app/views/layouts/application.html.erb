@@ -16,7 +16,7 @@
     </div>
     <p class="navbar-text navbar-right">
       <% if user_signed_in? %>
-        <strong><%= current_user.email %></strong>
+        <span><%= current_user.email %></span>
         <%= link_to raw("<i class='fa fa-user'></i>"), edit_user_registration_path, :class => 'navbar-link' %>
         <%= link_to raw("<i class='fa fa-sign-out'></i>"), destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
       <% end %>

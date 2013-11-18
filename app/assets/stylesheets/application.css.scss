@@ -10,7 +10,7 @@
  *
  *= require_self
  *= require listings
-
+ *= require font-awesome
  */
 
 @import "bootstrap";
@@ -43,8 +43,8 @@ body {
     letter-spacing: 1px;
     color: #fff;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-    &:hover {
-      color: #fff;
+    &:hover, &:focus {
+      color: #eee;
     }
   }
   .navbar-right {
@@ -52,7 +52,8 @@ body {
     margin-right: 0;
     margin-top: 10px;
     font-size: 1.2em;
-    strong {
+    span {
+      font-weight: bold;
       position: relative;
       top: -1px;
       color: #fff;
@@ -63,6 +64,16 @@ body {
       font-size: 1.2em;
       color: #fff;
       text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+      &:hover {
+        color: #eee;
+      }
     }
+  }
+}
+
+.footer {
+  span {
+    margin-left: 5px;
+    margin-right: 5px;
   }
 }
