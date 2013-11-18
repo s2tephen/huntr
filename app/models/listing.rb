@@ -13,6 +13,7 @@ class Listing < ActiveRecord::Base
     Mail.all.each do |e|
       Listing.find_or_create_by(name: e.subject[21..-1]) do |l|
         # TODO: time, location
+        l.updated_at = e.date
         l.body = e.parts[0].parts[0].decoded
         # TODO: category
         l.archived = false
