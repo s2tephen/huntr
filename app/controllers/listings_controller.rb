@@ -67,16 +67,6 @@ class ListingsController < ApplicationController
       end
     end
   end
-  
-  def search
-    search = Listing.search do
-      keywords 'some string here, maybe the params'
-      with :category, "Event" # category string here
-      order_by :name # order by date instead?
-    end
-    
-    @listings = search.results
-  end
 
   # DELETE /listings/1
   # DELETE /listings/1.json

@@ -4,20 +4,24 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'pg'
 
 # Use simple form for login page
-gem "simple_form"
+gem 'simple_form'
 
 # Use devise for users/permissions
 gem 'devise'
 
 # For text searching in database
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+# gem 'textacular'
 
 # Use mail for interfacing with gmail
 gem 'mail'
+
+# Use treat for NLP
+gem 'zip'
+gem 'treat'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
