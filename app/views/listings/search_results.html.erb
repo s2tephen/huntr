@@ -1,0 +1,6 @@
+<%= javascript_include_tag "homepage.js" %>
+<% if @listings.length == 0 %>
+  No results found.
+<% else %>
+  <%= render 'listingssummary' %>
+<% end %>

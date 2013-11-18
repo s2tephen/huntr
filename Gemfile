@@ -4,8 +4,8 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 # Use postgres for db
-#gem 'pg'
-gem 'sqlite3'
+gem 'pg'
+
 # Precompile assets for heroku
 group :production do
   gem 'rails_12factor'
@@ -18,7 +18,7 @@ gem 'simple_form'
 gem 'devise'
 
 # For text searching in database
-# gem 'textacular'
+gem 'textacular'
 
 # Use mail for interfacing with gmail
 gem 'mail'

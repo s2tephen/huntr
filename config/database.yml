@@ -22,10 +22,3 @@ test:
   username: <%= ENV["DB_USERNAME"] %>
   password: <%= ENV["DB_PASSWORD"] %>
 
-production:
-  adapter: postgresql
-  database: db/production
-  host: localhost
-  encoding: UTF8
-  username: <%= ENV["DB_USERNAME"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
