@@ -29,17 +29,18 @@
           <div class="feedall rt-btn btn btn-default" id="archivebutton">View Archive</div>
           <div class="feedall rt-btn btn btn-default" style="display:none" id="feedbutton">View All</div>
         </div>
-        <div class="col-md-6 input-group input-group-sm">
-          <span class="input-group-addon glyphicon glyphicon-search"></span>
-          <input type="text" class="form-control">
-        </div>
-        <div class="col-md-6"><button class="rt-btn btn btn-default">Search</button></div>
-        
+        <%= form_tag url_for(:controller => 'listings', :action => 'search_results'), :method=>:get, :remote=>true, :id => "search_results" do  %>
+          <div class="col-md-6 input-group input-group-sm">
+              <span class="input-group-addon glyphicon glyphicon-search"></span>
+              <%= text_field_tag :query, params[:query], class: "form-control" %>
+    
+            </div>
+            <div class="col-md-6"><%= submit_tag "Search", :name => nil, class: "rt-btn btn btn-default" %></div>
+            <% end %> 
+          </div>
+      <div class='row listingcontainer' id='feedlist'>
+        <%= render 'listingssummary' %>
       </div>
-      <div class="row listing-container" id="feedlist">
-        <%= render "listingssummary" %>
-      </div>
-
     </div>
 
 

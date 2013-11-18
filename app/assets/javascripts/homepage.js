@@ -65,5 +65,28 @@ $(document).ready((function() {
 		$('#listingdetail').addClass('listingview');
 		$('#calendar').load("listings/" + listing_id);
 	});
-
+	
+	// execute search
+	// $('#search_results').submit(function() {
+	  // console.log("HELLO")
+	  // $.ajax({
+      // url: 'search_results',
+      // complete: function(result){
+        // $('#feedlist').html(result);
+      // }
+    // });
+	// });
+  $(document).on("ajax:success", '#search_results', function(e, data, status, xhr){
+    $('#feedlist').html(xhr.responseText);
+  });
+	
+	 // execute search
+  // $('#search_results').submit(function() {  
+      // $.ajax({
+          // url: $(this).attr('action'), //sumbits it to the given url of the form
+      // }).success(function(json){
+          // //act on result.
+      // });
+      // return false; // prevents normal behaviour
+  // });
 }));

@@ -7,13 +7,11 @@ class ListingsController < ApplicationController
   def display_archive
     @listings=Listing.where(:archived => true)
     render :layout => false
-    #render :layout => "archive.html.erb"
   end
 
   def display_all
     @listings=Listing.where(:archived => false)
     render :layout => false
-    #render :layout => "archive.html.erb"
   end
 
   # GET /listings
@@ -29,6 +27,21 @@ class ListingsController < ApplicationController
     @listing = Listing.find(params[:id])
   end
 
+  def search_results
+    @query = params[:query]
+    if @query
+      @listings = Listing.basic_search(@query)
+      puts "QUERY " + @query
+      @listings.each do |l|
+        puts l.name
+      end
+      puts @listings.length
+    else
+      @listings = Listing.all
+    end
+    render :layout => false
+  end
+  
   # GET /listings/new
   def new
     @listing = Listing.new
@@ -86,6 +99,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :time, :location, :body, :category, :archived)
+      params.permit(:query, listings: [:name, :time, :location, :body, :category, :archived])
     end
 end
