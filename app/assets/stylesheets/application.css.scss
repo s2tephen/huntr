@@ -9,7 +9,60 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
+ *= require listings
+ *= require font-awesome
  */
 
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,400italic,700italic|Ultra);
+
+body, p, li, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Source Sans Pro', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+}
+
+body {
+  background-color: #eee;
+  width: 100%;
+}
+
+.navbar-bg {
+  background-color: #e67e22;
+  height: 50px;
+  width: 100%;
+  position: absolute;
+}
+
+.navbar {
+  background-color: transparent;
+  border: 0;
+  .navbar-brand {
+    padding-left: 0;
+    padding-right: 0;
+    font-size: 2em;
+    font-family: "Ultra";
+    letter-spacing: 1px;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    &:hover {
+      color: #fff;
+    }
+  }
+  .navbar-right {
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px;
+    font-size: 1.2em;
+    strong {
+      position: relative;
+      top: -1px;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    }
+    .navbar-link {
+      margin-left: 8px;
+      font-size: 1.2em;
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    }
+  }
+}

@@ -2,23 +2,32 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.listingcontainer {
-	overflow: auto;
+.section-header {
+	border: 2px solid #000;
+}
+
+.listing-container {
+	overflow-y: auto;
 	height: 150px;
-}
-
-.listing-name {
-	font-weight: bold;
-	font-size: 10;
-	text-align: left;
-}
-
-.listing-info {
-	font-size: 8;
-	text-align: justify;
-}
-.section-header{
-	border-style: solid;
+	.listing-area {
+		border-radius: 0;
+		border-top: 0;
+		.listing-name {
+			margin: 0;
+			font-weight: bold;
+			font-size: 1.2em;
+			white-space: normal;
+			text-align: left;
+		}
+		.listing-meta {
+			margin-top: 5px;
+			margin-bottom: 0;
+			text-align: left;
+			i {
+				margin-right: 5px;
+			}
+		}
+	}
 }
 
 .stats-bar {

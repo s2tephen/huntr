@@ -8,35 +8,29 @@
 </head>
 <body>
 
+<div class="navbar-bg"></div>
 <div class="container">
-  <!-- Navbar -->
   <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Huntr</a>
+      <a class="navbar-brand" href="#">huntr</a>
     </div>
     <p class="navbar-text navbar-right">
       <% if user_signed_in? %>
-        Logged in as <strong><%= current_user.email %></strong>.
-        <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-        <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-      <% else %>
-        <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-        <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+        <strong><%= current_user.email %></strong>
+        <%= link_to raw("<i class='fa fa-user'></i>"), edit_user_registration_path, :class => 'navbar-link' %>
+        <%= link_to raw("<i class='fa fa-sign-out'></i>"), destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
       <% end %>
     </p>
   </nav>
 
-  <!-- Flash messages -->
-  <% if notice %>
+<!--   <% if notice %>
   <p class="alert alert-notice"><%= notice %></p>
   <% end %>
   <% if alert %>
     <p class="alert alert-error"><%= alert %></p>
-  <% end %>
+  <% end %> -->
 
-  <!-- Main -->
   <%= yield %>
 </div>
-<>
 </body>
 </html>
