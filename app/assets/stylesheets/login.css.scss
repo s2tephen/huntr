@@ -1,0 +1,40 @@
+body.login {
+	background: url('http://farm5.staticflickr.com/4146/4994366171_165c6d0096_o.jpg');
+	background-size: cover;
+	h1 {
+		font-size: 3.2em;
+	}
+	h2 {
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 1.6em;
+	}
+	h1, h2, .control-label {
+		color: #fff;
+	}
+	.input-lg {
+		margin-bottom: 10px;
+	}
+	.form-actions {
+		.btn {
+			margin-right: 10px;
+		}
+		.checkbox {
+			float: left;
+			margin: 0;
+			margin-left: 10px;
+			padding-left: 0;
+			margin-top: 5px;
+			label {
+				float: none;
+				&.control-label {
+					margin-left: 10px;
+				}
+				&.checkbox {
+					margin-top: -20px;
+					float: left;
+				}
+			}
+		}
+	}
+}

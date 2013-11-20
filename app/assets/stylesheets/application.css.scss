@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require listings
+ *= require login
  *= require font-awesome
  */
 
@@ -74,6 +75,7 @@ body {
 .footer {
   border-top: 1px solid #ccc;
   padding-top: 15px;
+  margin-top: 30px;
   padding-bottom: 30px;
   color: #999;
   span {
