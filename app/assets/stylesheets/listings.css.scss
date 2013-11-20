@@ -8,7 +8,7 @@
 
 .listing-container {
 	overflow-y: auto;
-	height: 150px;
+	height: 240px;
 	.listing-area {
 		border-radius: 0;
 		border-top: 0;
@@ -30,29 +30,66 @@
 	}
 }
 
-#listing {
-	display: none;
-	padding-left: 15px;
-	h2 {
-		margin-top: 0;
-		font-weight: bold;
+.pane-right {
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
+
+	-webkit-transition-delay: .3s;
+	-moz-transition-delay: .3s;
+	-o-transition-delay: .3s;
+	-ms-transition-delay: .3s;
+	transition-delay: .3s;
+
+	#listing {
+		padding-left: 30px;
+		padding-bottom: 30px;
+		h2 {
+			margin-top: 0;
+			font-weight: bold;
+		}
+		p {
+			font-size: 1.1em;
+		}
 	}
-	p {
-		font-size: 1.1em;
-	}
 }
 
-.table-border {
-	border-style: solid;
-	border-color: blue;
+// transitions adapted from http://git.aaronlumsden.com/tabulous.js
+.make_transist {
+	-webkit-transition: all .3s ease-in-out;
+	-moz-transition: all .3s ease-in-out;
+	-o-transition: all .3s ease-in-out;
+	-ms-transition: all .3s ease-in-out;
+	transition: all .3s ease-in-out;
 }
 
-.rt-btn {
-	background-color: lightgreen;
-	float: right;
+.listing-hide {
+	-webkit-transform: scale(0.99);
+	-moz-transform: scale(0.99);
+	-o-transform: scale(0.99);
+	-ms-transform: scale(0.99);
+	transform: scale(0.99);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	filter: alpha(opacity=0);
+	opacity: 0;
 }
 
-.header-text {
-	font-size: medium;
-	text-align: left;
+.listing-show {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-o-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity=100);
+	opacity: 1;
+
+	-webkit-transition-delay: .3s;
+	-moz-transition-delay: .3s;
+	-o-transition-delay: .3s;
+	-ms-transition-delay: .3s;
+	transition-delay: .3s;
 }

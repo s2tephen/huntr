@@ -1,7 +1,9 @@
 class Listing < ActiveRecord::Base
   has_and_belongs_to_many :users, join_table: "users_favorites"
-  
+
   def self.fetch
+    require 'date'
+
     Mail.defaults do
       retriever_method :pop3, { :address    => "pop.gmail.com",
                                 :port       => 995,
@@ -29,4 +31,14 @@ class Listing < ActiveRecord::Base
 	def display_all
 		@listings=Listing.where(:archived => false)
 	end
+
+	def favorite(user)
+		listing = Listing.find(self.id)
+		if user.favorites.include?(listing)
+			user.favorites.delete(listing)
+		else
+			user.favorites.append(listing)
+		end
+	end
+
 end

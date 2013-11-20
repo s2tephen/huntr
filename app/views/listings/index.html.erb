@@ -42,20 +42,17 @@
       <div class="row listing-container" id="feedlist">
         <%= render "listingssummary" %>
       </div>
-
+      <div class="row footer">
+        &copy; 2013 Huntr <span>•</span> Anne Hunter has sent <%= pluralize(Listing.where(updated_at: Time.now.midnight..Time.now).length, 'email') %> today.
+      </div>
     </div>
 
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-      <div class="row section header">
-        <div id="calendar">insert calendar here</div>
-        <div id="listing">insert calendar here</div>
+      <div class="row pane-right">
+        <!-- <div id="calendar">insert calendar here</div> -->
+        <div id="listing" class="showleft">insert calendar here</div>
       </div>
       <!-- ajax display listing detail?-->
     </div>
-  </div>
-
-  <br/>
-  <div class="row footer">
-    &copy; 2013 Huntr <span>•</span> Anne Hunter has sent <%= pluralize(Listing.where(updated_at: Time.now.midnight..Time.now).length, 'email') %> today.
   </div>
 </div>
