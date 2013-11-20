@@ -65,19 +65,19 @@
 	transition: all .3s ease-in-out;
 }
 
-.hidescale {
-	-webkit-transform: scale(0.9);
-	-moz-transform: scale(0.9);
-	-o-transform: scale(0.9);
-	-ms-transform: scale(0.9);
-	transform: scale(0.9);
+.listing-hide {
+	-webkit-transform: scale(0.99);
+	-moz-transform: scale(0.99);
+	-o-transform: scale(0.99);
+	-ms-transform: scale(0.99);
+	transform: scale(0.99);
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 	filter: alpha(opacity=0);
 	filter: alpha(opacity=0);
 	opacity: 0;
 }
 
-.showscale {
+.listing-show {
 	-webkit-transform: scale(1);
 	-moz-transform: scale(1);
 	-o-transform: scale(1);

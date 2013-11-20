@@ -54,11 +54,11 @@ $(document).ready((function() {
   $('.listing-area').click(function(){
     //insert ajax to do following line
     var listing_id = $(this).attr('id').split('-')[1];
-    $('#listing').removeClass('showscale').addClass('make_transist').addClass('hidescale');
+    $('#listing').removeClass('listing-show').addClass('make_transist').addClass('listing-hide');
     setTimeout(function() {
       $.get( 'listings/' + listing_id, function(data) {
         $('#listing').html(data);
-        $('#listing').removeClass('hidescale').addClass('showscale');
+        $('#listing').removeClass('listing-hide').addClass('listing-show');
       });
     }, 300);
   });
