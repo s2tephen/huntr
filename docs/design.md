@@ -6,9 +6,10 @@ Huntr aims to organize Anne Hunter's emails into a useful, intuitive graphical i
 
 Goals of Huntr include:
 
-* Sort and display most pertinent information from Anne Hunter's emails
-* Allow users to personalize the listings that are most important to them
-* Hook into users’ personal calendars
+* Sort and display the most pertinent information (e.g., deadlines, category, time/location) from Anne Hunter's emails
+* Allow users to curate the listings to their interests
+* Let users export listings to their personal calendar systems
+* Experiment with building an web interface that integrates emails
 
 ### Context diagram
 
@@ -18,10 +19,10 @@ Goals of Huntr include:
 ### Key concepts
 
 * An **email** is a message from Anne Hunter.
-* A **listing** is a processed email. Listings with a date/time are called **events**, and listings become **archived** after a predetermined period of time.
-* A user can **filter** the listings by pre-determined categories.
-* A user can **search** the listings for any desired string.
-* A **subscription** allows a user to save listings of interest.
+* A **listing** is a processed email. Listings with a date/time are called **events**.
+* A user can **filter** the listings by **category**, which are chosen from predetermined categories including events, internships, announcements, etc.
+* A user can **search** the text of the listings for a desired string.
+* A user can **favorite** listings of interest for easy access.
 
 ### Data model
 
@@ -37,9 +38,26 @@ Goals of Huntr include:
 
 ### Security concerns
 
-To use Huntr, you must register with an @mit.edu address.  This limits the app’s users to people who would otherwise have access to Anne Hunter’s mailing list, i.e. the MIT community.  Besides email addresses (which are publicly accessible via MIT people search anyway), Huntr does not request or store any personal information from its users and thus bear no risk of exposing sensitive information.
+#### Security Requirements
+* Only users with MIT email addresses are provided access to Huntr.  This limits Huntr’s data to users who would otherwise have access to Anne Hunter’s emails (MIT community).
+* Users must be logged in to view listings.
+* Users cannot view other users' favorites.
+* No exposure of sensitive information. Huntr stores no personal information from users besides email addresses, which are publicly searchable via MIT people search.
 
-To circumvent the risk of users signing up with fake kerberos or @mit.edu addresses that do not belong to them, we will use email verification to ensure that they are indeed the owners of those addresses.  Furthermore, if someone else’s address is used to sign up, this verifying email will contain a link that allows the recipient to indicate that they did not intend to sign up for the service.  In this case, the email address will be blacklisted from registering for 24 hours, thus deterring trolls and other malicious users.
+#### Threat Model
+Hacking the email account that Huntr processes emails from
+Spoofing emails from Anne Hunter
+Taking control of other users’ accounts and changing their favorited listings
+
+#### Risks and Mitigations
+* **Users sign up with fake Kerberos or email addresses that do not belong to them**  
+  → Use email verification to ensure that they are owners of those addresses. If someone else’s address is used to sign up, the verifying email will contain a link that allows the recipient to indicate that they did not intend to sign up for the service.  In this case, the email address will be blacklisted from registering for 24 hours, thus deterring trolls and other malicious users.
+  
+* **Email server crashes, so Huntr cannot fetch emails to process**  
+  → Retroactively update the database after a crash. Huntr does this by utilizing the “recent:” gmail prefix, which shows all of Huntr’s email from the past thirty days regardless of whether or not it’s been sent to a POP client already. Then, Huntr checks the email against the listings that have already been processed and creates listings for any emails missing from the database.
+  
+* **Email account that Huntr fetches from is hacked**  
+  → We’ll notice if the email is hacked, in which case we’ll create a new account and remove the old account from eecs-jobs-announce. The new account will be used to fetch emails.
 
 ### User interface
 
@@ -52,34 +70,51 @@ To circumvent the risk of users signing up with fake kerberos or @mit.edu addres
 ![Main page](img/wireframe_main.png)
 
 ## Challenges
-
 * Displaying listings on feed
   * Problem: listings need to be displayed in an intuitive yet useful way to maximize information flow from Huntr to users.
-  * Options: creation, last modified, event time
+  
+  * Solutions: creation, last modified, event time
     * Creation would be more intuitive (email default) but no improvement
     * Last modified would incorporate event updates, but similar to default
     * Event time would highlight soonest event, but difficult for non-events
-  * Solution: last modified
-    * Anne Hunter will most likely email reminders for events, so the last modified field of a listing will be updated.
+  * Chosen Solution: last modified
+  
+    * Anne Hunter will most likely email reminders for events, so the last modified field of a listing will be updated. 
 
 * Categorization
   * Problem: how should listings be categorized? Should each listing have more than one category?
-  * Options: categorize by sponsor, listing type, time, location; one or multiple categories
+  
+  * Solutions: categorize by sponsor, listing type, time, location; one or multiple categories
     * Categorization by sponsor seems most useful, but difficult. We could use keyword string search to simplify this process.
     * Multiple categories don’t seem useful since we also have filter/search
-  * Solution: hierarchical categorizer outputs single category or “other” based on listing type
+  * Chosen Solution: hierarchical categorizer outputs single category or “other” based on listing type
+  
+    * Hierarchical categorization.  A listing will be checked against wordlists in order, and once it matches a word, it will be assigned the corresponding category.  This is a better implementation than checking all wordlists and outputting the category with the best match because ‘best match’ is difficult to define.
     * Any listing with a “time” will be considered an event (top layer), then we can search for keywords such as “deadline” or “apply” for jobs, and similarly for announcements and updates.
     * There will be an “other” category for listings that do not match any levels in the categorizer
 
 * Querying listings
-  * Problem: queries can be based on predefined categories or listing metadata or keyword search. How much freedom should the users get?  Can users query on multiple filters?
-  * Options: query by predefined categories, keyword search, listing metadata; single vs multiple filters?
+  * Problem: queries can be performed on predefined categories or listing metadata or keyword search. How much freedom should the users get? Can users query on conditions?
+
+  * Solutions: can query by predefined categories, by keyword search, by listing metadata; can perform query on one condition or multiple conditions
     * By predefined categories would be simple but limiting
     * By keyword search seems slightly useless 
     * By metadata is most flexible but lots of processing
-    * Combining queries might be tricky
-  * Solution: queries can be filters on predefined categories or search on a keyword. Filters and Searches can be stacked
+    * Combining query conditions might be tricky
+
+  * Chosen Solution: queries can be filters on predefined categories or searches based on keywords. A single Filter and multiple Searches can be stacked.
     * Category seems to be the only useful metadata info
     * Keyword search is useful if users want listings from single company
     * Allowing users to stack queries will give them the maximum flexibility and utility with Huntr.
+    
+* Search implementation
+    * Problem:  We want an out-of-the-box gem for full-text searching on databases.
+    
+    * Solutions: use gems such as Sunspot, Textacular
+      * Sunspot runs on Solr and can be used on sqlite databases. Using Solr on Heroku costs money, though, which would be inconvenient in maintaining the service in the future.
+      * Textacular runs on postgres databases, so we would have to migrate our database to postgres.
+    * Chosen Solution: Use Textacular.
+    
+      * It’s a pretty powerful gem for full-text searching.
+      * Migrating to Postgres was a pain but it’s supposed to be faster than sqlite. Also, there will be fewer problems down the line once we deploy to Heroku.
 
