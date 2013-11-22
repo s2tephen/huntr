@@ -45,9 +45,9 @@ Goals of Huntr include:
 * No exposure of sensitive information. Huntr stores no personal information from users besides email addresses, which are publicly searchable via MIT people search.
 
 #### Threat Model
-Hacking the email account that Huntr processes emails from
-Spoofing emails from Anne Hunter
-Taking control of other users’ accounts and changing their favorited listings
+* Hacking the email account that Huntr processes emails from
+* Spoofing emails from Anne Hunter
+* Taking control of other users’ accounts and changing their favorited listings
 
 #### Risks and Mitigations
 * **Users sign up with fake Kerberos or email addresses that do not belong to them**  
