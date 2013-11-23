@@ -20,7 +20,6 @@ $(document).ready((function() {
   });
   
   $('#feedbutton').click(function(){
-    console.log('feedbutton clicked');
     $(this).hide();
     $('#archivebutton').show();
     $.ajax({
@@ -31,6 +30,7 @@ $(document).ready((function() {
     });
     $('#archivebutton').unbind();
   });
+
   
   //toggle show/hide for favorites
   $('#favsbutton').click(function(){
@@ -61,6 +61,23 @@ $(document).ready((function() {
         $('#listing').removeClass('listing-hide').addClass('listing-show');
       });
     }, 300);
+  });
+  
+  // favorite/unfavorite listing
+  $('.fav-button').click(function(){
+    console.log("fav button clicked");
+    //insert ajax to do following line
+    var listing_id = $(this).attr('id').split('-')[2];
+    var add_fav = $(this).hasClass('fa-star-o');
+    $(this).toggleClass('fa-star-o fa-star');
+    $.ajax({
+      url: "fav_listing",
+      data: "add_fav="+ add_fav + "&listing_id=" + listing_id,
+      success: function(result) {
+        $('#favslist').html(result);
+      }
+    });
+    $('.fav-button').unbind();
   });
 
   $(document).on('ajax:success', '#search_results', function(e, data, status, xhr){

@@ -3,39 +3,33 @@ class ListingsController < ApplicationController
 
   #ajax call to get archived listings  
   def display_archive
-    @listings=Listing.where(:archived => true)
+    @listings = Listing.where(:archived => true)
     render :layout => false
-    #render :layout => "archive.html.erb"
   end
 
   def display_all
-    @listings=Listing.where(:archived => false)
+    @listings = Listing.where(:archived => false)
     render :layout => false
-    #render :layout => "archive.html.erb"
   end
 
   # search results
   def search_results
     @query = params[:query]
-
     if @query
       @listings = Listing.basic_search(@query)
-
-      puts "QUERY " + @query
-
-      @listings.each do |l|
-
-        puts l.name
-
-      end
-      puts @listings.length
-
     else
       @listings = Listing.all
-
     end
     render :layout => false
-
+  end
+  
+  # favorite/unfavorite listing
+  def fav_listing
+    @add_fav = params[:add_fav]
+    @listing = Listing.find(params[:listing_id])
+    @listing.favorite(current_user)
+    @favorites = current_user.favorites
+    render :layout => false
   end
 
   # GET /listings
