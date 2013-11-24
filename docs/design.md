@@ -2,14 +2,14 @@
 ## Overview
 ### Purpose & goals
 
-Huntr aims to organize Anne Hunter's emails into a useful, intuitive graphical interface. Currently, there is no way to view the content of these emails besides sifting through the emails themselves.  It can be time consuming to find the information that is important to you and Huntr provides a tool to do that.  This app will be accessible to all of MIT and does not require users to be on eecs-jobs-announce.
+Huntr aims to organize Anne Hunter's emails into a useful, intuitive graphical interface. Currently, there is no way to view the content of these emails besides sifting through the emails themselves. It can be time consuming to find the information that is important to you and Huntr provides a tool to do that. This app will be accessible to all of MIT and does not require users to be on eecs-jobs-announce.
 
 Goals of Huntr include:
 
 * Sort and display the most pertinent information (e.g., deadlines, category, time/location) from Anne Hunter's emails
 * Allow users to curate the listings to their interests
 * Let users export listings to their personal calendar systems
-* Experiment with building an web interface that integrates emails
+* Experiment with building a web interface that integrates emails
 
 ### Context diagram
 
@@ -32,7 +32,7 @@ Goals of Huntr include:
 ### Feature descriptions
 
 * **Up-to-date feed.** Huntr takes Anne Hunter’s emails and displays them in a simple stream of listings that highlight the most important information.
-* **Listing subscriptions.** Huntr allows you to subscribe to listings you’re interested in, and notifies you whenever updates are made to them.
+* **Favorite listings.** Huntr allows you to favorite listings you’re interested in, and notifies you whenever updates are made to them.
 * **Calendar export.** Huntr lets you export interesting listings as events for your organizational systems such as Google Calendar.
 * **Filter and search.** Huntr allows you to find the listings you’re interested in, based on predetermined categories or simple text search.
 
@@ -45,9 +45,15 @@ Goals of Huntr include:
 * No exposure of sensitive information. Huntr stores no personal information from users besides email addresses, which are publicly searchable via MIT people search.
 
 #### Threat Model
-* Hacking the email account that Huntr processes emails from
-* Spoofing emails from Anne Hunter
-* Taking control of other users’ accounts and changing their favorited listings
+* Hackers will most likely attack our system purely for fun (pranks)
+  * Huntr does not store any private personal information, so assume no interest from state actors or criminal syndicates.
+  * Pranks may include changing other people’s favorites, signing someone else up for Huntr, or spoofing Anne Hunter’s emails.
+  * Rails has_secure_password will protect user login information.
+* Hackers may be non-MIT people who want access to Anne Hunter’s emails
+  * MIT users already have access to Anne Hunter’s mailing list and therefore have no access-related incentive to attack Huntr.
+  * No threat to users’ information or Huntr’s operation.
+* Hackers may take control of the email account from which Huntr processes emails
+  * Most problematic issue as it presents a huge threat to Huntr’s operation.
 
 #### Risks and Mitigations
 * **Users sign up with fake Kerberos or email addresses that do not belong to them**  
@@ -71,9 +77,9 @@ Goals of Huntr include:
 
 ## Challenges
 * Displaying listings on feed
-  * Problem: listings need to be displayed in an intuitive yet useful way to maximize information flow from Huntr to users.
+  * Problem: Listings need to be displayed in an intuitive yet useful way to maximize information flow from Huntr to users.
   
-  * Solutions: creation, last modified, event time
+  * Solutions: Sort by creation, last modified, event time
     * Creation would be more intuitive (email default) but no improvement
     * Last modified would incorporate event updates, but similar to default
     * Event time would highlight soonest event, but difficult for non-events
@@ -82,35 +88,35 @@ Goals of Huntr include:
     * Anne Hunter will most likely email reminders for events, so the last modified field of a listing will be updated. 
 
 * Categorization
-  * Problem: how should listings be categorized? Should each listing have more than one category?
+  * Problem: How should listings be categorized? Should each listing have more than one category?
   
-  * Solutions: categorize by sponsor, listing type, time, location; one or multiple categories
+  * Solutions: Categorize by sponsor, listing type, time, or location; listing can fit one or multiple categories
     * Categorization by sponsor seems most useful, but difficult. We could use keyword string search to simplify this process.
-    * Multiple categories don’t seem useful since we also have filter/search
-  * Chosen Solution: hierarchical categorizer outputs single category or “other” based on listing type
+    * Allowing multiple categories will cater to listings that can belong to multiple groups, but doesn't seem useful since we also have search
+  * Chosen Solution: Use machine learning gem nbayes to categorize listings based on input email’s subject line and body.  Each listing will only fit to one category.
   
-    * Hierarchical categorization.  A listing will be checked against wordlists in order, and once it matches a word, it will be assigned the corresponding category.  This is a better implementation than checking all wordlists and outputting the category with the best match because ‘best match’ is difficult to define.
+    * Will manually categorize some emails to train nbayes.
     * Any listing with a “time” will be considered an event (top layer), then we can search for keywords such as “deadline” or “apply” for jobs, and similarly for announcements and updates.
-    * There will be an “other” category for listings that do not match any levels in the categorizer
+    * There will be an “other” category for listings that do not match any levels in the categorizer.
 
 * Querying listings
-  * Problem: queries can be performed on predefined categories or listing metadata or keyword search. How much freedom should the users get? Can users query on conditions?
+  * Problem: Queries can be performed on predefined categories or listing metadata or keyword search. How much freedom should the users get? Can users query on conditions?
 
-  * Solutions: can query by predefined categories, by keyword search, by listing metadata; can perform query on one condition or multiple conditions
+  * Solutions: Can query by predefined categories, by keyword search, by listing metadata; can perform query on one condition or multiple conditions
     * By predefined categories would be simple but limiting
     * By keyword search seems slightly useless 
     * By metadata is most flexible but lots of processing
     * Combining query conditions might be tricky
 
-  * Chosen Solution: queries can be filters on predefined categories or searches based on keywords. A single Filter and multiple Searches can be stacked.
-    * Category seems to be the only useful metadata info
-    * Keyword search is useful if users want listings from single company
+  * Chosen Solution: Queries can be filters on predefined categories or searches based on keywords. A filter and a search can be stacked.
+    * Category seems to be the only useful metadata info.
+    * Keyword search is useful if users want listings from single company.
     * Allowing users to stack queries will give them the maximum flexibility and utility with Huntr.
     
 * Search implementation
     * Problem:  We want an out-of-the-box gem for full-text searching on databases.
     
-    * Solutions: use gems such as Sunspot, Textacular
+    * Solutions: Use gems such as Sunspot, Textacular
       * Sunspot runs on Solr and can be used on sqlite databases. Using Solr on Heroku costs money, though, which would be inconvenient in maintaining the service in the future.
       * Textacular runs on postgres databases, so we would have to migrate our database to postgres.
     * Chosen Solution: Use Textacular.
