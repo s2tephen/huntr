@@ -23,9 +23,9 @@ gem 'textacular'
 # Use mail for interfacing with gmail
 gem 'mail'
 
-# Use treat for NLP
-gem 'zip'
-gem 'treat'
+# NLP gems
+gem 'nbayes' # classification
+gem 'timeliness' # date/time
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
