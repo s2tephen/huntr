@@ -11,10 +11,8 @@
   padding: 10px 0;
 }
 
-#location-map {
-  height: 150px;
-}
 
+// Listings summary
 .listing-container {
 	overflow-y: auto;
 	height: 240px;
@@ -62,6 +60,13 @@
 		p {
 			font-size: 1.1em;
 		}
+    #location-map {
+      height: 150px;
+    }
+    .listing-body {
+      max-height: 350px;
+      overflow-y: auto;
+    }
 	}
 }
 
