@@ -1,2 +1,29 @@
+<div class="row">
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">LISTING</div>
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <div class='btn btn-default' id='view-cal'>Back to Calendar</div>
+  </div>
+</div>
+
 <h2><%= @listing.name %></h2>
+<div>TIME HERE<%= @listing.time %></div>
+
+<div class="listing-body">
 <%= simple_format(@listing.body) %>
+</div>
+
+<div class="row listing-quick-view">
+  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="location-map"></div>
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+    <div>Event Details</div>
+    <div>Time: <%= @listing.time %></div>
+    <div>Location: <%= @listing.location %></div>
+    <div>Sponsors:</div>
+   
+    <%= link_to 'http://www.google.com/calendar/event?action=TEMPLATE&text='+@listing.name+'&dates=20140106T053000Z/20140106T060000Z&details=&location=32-124&trp=false&sprop=&sprop=name:', class: 'btn btn-default', target: '_blank' do %>
+      <%= image_tag('gcal.png') %> Add to Google Calendar
+    <% end %>
+  </div>
+</div>
+
+
