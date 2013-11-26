@@ -21,4 +21,3 @@ test:
   encoding: UTF8
   username: <%= ENV["DB_USERNAME"] %>
   password: <%= ENV["DB_PASSWORD"] %>
-
