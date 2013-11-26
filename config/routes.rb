@@ -11,6 +11,7 @@ Huntr::Application.routes.draw do
   match "display_archive", to: "listings#display_archive", via: :get
   match "display_all", to: "listings#display_all", via: :get
   match "search_results", to: "listings#search_results", via: :get
+  match "fav_listing", to: "listings#fav_listing", via: :get
 
 
   # Example of regular route:

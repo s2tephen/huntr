@@ -18,3 +18,4 @@
 
 # Ignore local environment variables.
 /config/local_env.yml
+Gemfile.lock
