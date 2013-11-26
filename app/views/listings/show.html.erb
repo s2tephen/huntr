@@ -5,8 +5,10 @@
   </div>
 </div>
 
-<h2><%= @listing.name %></h2>
-<div>TIME HERE<%= @listing.time %></div>
+<div class="listing-header">
+  <h2><%= @listing.name %></h2>
+  <div>TIME HERE<%= @listing.time %></div>
+</div>
 
 <div class="listing-body">
 <%= simple_format(@listing.body) %>
