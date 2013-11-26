@@ -66,12 +66,7 @@ GEM
     minitest (4.7.5)
     multi_json (1.8.2)
     orm_adapter (0.5.0)
-<<<<<<< HEAD
-    pg (0.17.0)
-    pg (0.17.0-x86-mingw32)
-=======
     pg (0.17.0-x64-mingw32)
->>>>>>> 4ec731ab23280882af48b9a3e4bc9b6355a24270
     polyglot (0.3.3)
     progressbar (0.21.0)
     rack (1.5.2)
