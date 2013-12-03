@@ -7,9 +7,7 @@ Huntr::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root :to => 'listings#index'
-
-  match "display_archive", to: "listings#display_archive", via: :get
-  match "display_all", to: "listings#display_all", via: :get
+  
   match "search_results", to: "listings#search_results", via: :get
   match "fav_listing", to: "listings#fav_listing", via: :get
 end

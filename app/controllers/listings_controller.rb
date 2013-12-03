@@ -1,17 +1,6 @@
 class ListingsController < ApplicationController
   #before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-  #ajax call to get archived listings  
-  def display_archive
-    @listings = Listing.where(:archived => true)
-    render :layout => false
-  end
-
-  def display_all
-    @listings = Listing.where(:archived => false)
-    render :layout => false
-  end
-
   # search results
   def search_results
     @query = params[:query]
@@ -99,6 +88,6 @@ class ListingsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def listing_params
-      params.require(:listing).permit(:name, :time, :location, :body, :category, :archived)
+      params.require(:listing).permit(:name, :time, :location, :body, :category)
     end
 end
