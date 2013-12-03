@@ -20,16 +20,24 @@ class Listing < ActiveRecord::Base
         # TODO: category
         l.archived = false
         # TODO: food
+        # RiCal.Calendar do |ics_file|
+          # ics_file.event do |event|
+            # event.description = l.name
+            # event.dtstart = DateTime.current
+            # event.location = "77 Mass Ave"
+          # end
+        # end
+        # l.ics = ics_file
       end
     end
   end
 
 	def display_archive
-		@listings=Listing.where(:archived => true)
+		@listings = Listing.where(:archived => true)
 	end
 
 	def display_all
-		@listings=Listing.where(:archived => false)
+		@listings = Listing.where(:archived => false)
 	end
 
 	def favorite(user)

@@ -7,18 +7,13 @@
           <div class="showfavs rt-btn btn btn-default" id="favsbutton"> hide </div>
         </div>
       </div>
-      <div class="row listing-container" id="favslist">
-        <%= render "favssummary" %>
+    <div class="row listing-container" id="favslist">
+      <%= render "favssummary" %>
+    </div>
+      
 
-      </div>
-
-      <br/>
       <div class="row section-header" name="listings">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 header-text"> FEED </div>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <div class="feedall rt-btn btn btn-default" id="archivebutton">View Archive</div>
-          <div class="feedall rt-btn btn btn-default" style="display:none" id="feedbutton">View All</div>
-        </div>
         <%= form_tag url_for(:controller => 'listings', :action => 'search_results'), :method=>:get, :remote=>true, :id => "search_results" do  %>
           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 input-group input-group-sm">
             <span class="input-group-addon glyphicon glyphicon-search"></span>
@@ -27,11 +22,11 @@
           </div>
           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><%= submit_tag "Search", :name => nil, class: "rt-btn btn btn-default" %></div>
         <% end %>
-        
       </div>
       <div class="row listing-container" id="feedlist">
         <%= render "listingssummary" %>
       </div>
+      
       <div class="row footer">
         &copy; 2013 Huntr <span>•</span> Anne Hunter has sent <%= pluralize(Listing.where(updated_at: Time.now.midnight..Time.now).length, 'email') %> today.
       </div>
