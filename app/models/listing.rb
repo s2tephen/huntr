@@ -18,7 +18,6 @@ class Listing < ActiveRecord::Base
         l.updated_at = e.date
         l.body = e.parts[0].parts[0].decoded
         # TODO: category
-        l.archived = false
         # TODO: food
         # RiCal.Calendar do |ics_file|
           # ics_file.event do |event|

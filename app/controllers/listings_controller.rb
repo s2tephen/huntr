@@ -25,7 +25,7 @@ class ListingsController < ApplicationController
   # GET /listings.json
   def index
     @favorites = current_user.favorites
-    @listings = Listing.where(:archived => false).reverse
+    @listings = Listing.all
   end
 
   # GET /listings/1

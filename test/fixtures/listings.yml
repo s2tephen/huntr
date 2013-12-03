@@ -6,7 +6,6 @@ one:
   location: MyString
   body: MyText
   category: MyString
-  archived: false
 
 two:
   name: MyString
@@ -14,4 +13,3 @@ two:
   location: MyString
   body: MyText
   category: MyString
-  archived: false
