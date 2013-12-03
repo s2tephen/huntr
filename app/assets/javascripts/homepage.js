@@ -1,36 +1,10 @@
-//Primary Author: Yinfu
-
-$(document).ready((function() {
-  //initialize listing detail view to be hidden
+$(document).ready(function() {
+  // Initialize listing detail view to be hidden
   $('#listingdetail').slideUp();
   $('#listingdetail').removeClass('listingview');
-
-  //toggle archive/all for feed
-  $('#archivebutton').click(function(){
-    console.log('archivebutton clicked');
-    $(this).hide();
-    $('#feedbutton').show();
-    $.ajax({
-      url: 'display_archive',
-      success: function(result){
-        $('#feedlist').html(result);
-      }
-    });
-    $('#feedbutton').unbind();
-  });
   
-  $('#feedbutton').click(function(){
-    $(this).hide();
-    $('#archivebutton').show();
-    $.ajax({
-      url: 'display_all',
-      success: function(result){
-        $('#feedlist').html(result);
-      }
-    });
-    $('#archivebutton').unbind();
-  });
-
+  // Attach event listeners
+  
   
   //toggle show/hide for favorites
   $('#favsbutton').click(function(){
@@ -57,6 +31,7 @@ $(document).ready((function() {
     $('#listing').removeClass('listing-show').addClass('make_transist').addClass('listing-hide');
     setTimeout(function() {
       $.get( 'listings/' + listing_id, function(data) {
+        makeMap("32-124");
         $('#listing').html(data);
         $('#listing').removeClass('listing-hide').addClass('listing-show');
       });
@@ -65,8 +40,6 @@ $(document).ready((function() {
   
   // favorite/unfavorite listing
   $('.fav-button').click(function(){
-    console.log("fav button clicked");
-    //insert ajax to do following line
     var listing_id = $(this).attr('id').split('-')[2];
     var add_fav = $(this).hasClass('fa-star-o');
     $(this).toggleClass('fa-star-o fa-star');
@@ -83,4 +56,4 @@ $(document).ready((function() {
   $(document).on('ajax:success', '#search_results', function(e, data, status, xhr){
     $('#feedlist').html(xhr.responseText);
   });
-}));
+});

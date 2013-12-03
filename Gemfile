@@ -28,6 +28,9 @@ gem 'nbayes' # classification
 gem 'timeliness' # date/time
 gem 'fuzzy_match' # similarity
 
+# For creating .ics files for calendar export
+gem "ri_cal", "~> 0.8.8"
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 

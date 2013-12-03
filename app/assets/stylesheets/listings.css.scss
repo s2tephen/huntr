@@ -2,10 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.section-header {
-	border: 2px solid #000;
+.section {
+	border: 2px solid #333333;
+	border-radius: 4px;
 }
 
+.section-header {
+  padding: 10px 0;
+}
+
+
+// Listings summary
 .listing-container {
 	overflow-y: auto;
 	height: 240px;
@@ -53,6 +60,13 @@
 		p {
 			font-size: 1.1em;
 		}
+    #location-map {
+      height: 150px;
+    }
+    .listing-body {
+      max-height: 350px;
+      overflow-y: auto;
+    }
 	}
 }
 
