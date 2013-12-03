@@ -32,14 +32,6 @@ class Listing < ActiveRecord::Base
     end
   end
 
-	def display_archive
-		@listings = Listing.where(:archived => true)
-	end
-
-	def display_all
-		@listings = Listing.where(:archived => false)
-	end
-
 	def favorite(user)
 		listing = Listing.find(self.id)
 		if user.favorites.include?(listing)
