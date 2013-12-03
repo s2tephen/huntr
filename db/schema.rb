@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131118031537) do
+ActiveRecord::Schema.define(version: 20131203052035) do
 
   create_table "listings", force: true do |t|
     t.string   "name"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20131118031537) do
     t.string   "location"
     t.text     "body"
     t.string   "category"
-    t.boolean  "archived"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "food"
