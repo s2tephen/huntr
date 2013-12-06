@@ -1,5 +1,6 @@
 class Listing < ActiveRecord::Base
-  has_and_belongs_to_many :users, join_table: "users_favorites"
+  has_many :favorites
+  has_many :users, through: :favorites
 
   def self.fetch
     Mail.defaults do
@@ -32,16 +33,5 @@ class Listing < ActiveRecord::Base
       end
     end
   end
-
-  # action called by favorite button
-  # toggles favorite status
-	def favorite(user)
-		listing = Listing.find(self.id)
-		if user.favorites.include?(listing)
-			user.favorites.delete(listing)
-		else
-			user.favorites.append(listing)
-		end
-	end
 
 end
