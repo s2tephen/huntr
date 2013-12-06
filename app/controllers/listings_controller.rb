@@ -13,18 +13,16 @@ class ListingsController < ApplicationController
   end
   
   # favorite/unfavorite listing
-  def fav_listing
-    @add_fav = params[:add_fav]
-    @listing = Listing.find(params[:listing_id])
-    @listing.favorite(current_user)
-    @favorites = current_user.favorites
+  def fav_listing    
+    current_user.favorite(Listing.find(params[:listing_id]))
+    @fav_listings = current_user.listings
     render :layout => false
   end
 
   # GET /listings
   # GET /listings.json
   def index
-    @favorites = current_user.favorites
+    @fav_listings = current_user.listings
     @listings = Listing.order(updated_at: :desc)
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @month_listings = Listing.where('extract(month from updated_at) = ? AND extract(year from updated_at) = ?', 
