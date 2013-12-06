@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
       save
   	else
     #else create object
-  		@fav = Favorite.new(user_id: id, listing_id: listing.id)
+  		@fav = Favorite.new(user_id: id, listing_id: listing.id, read: false)
       @fav.save
       save
   	end

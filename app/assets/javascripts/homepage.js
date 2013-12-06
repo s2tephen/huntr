@@ -26,6 +26,7 @@ $(document).ready(function() {
     //insert ajax to do following line
     var listing_id = $(this).attr('id').split('-')[1];
     $('#listing').removeClass('listing-show').addClass('make_transist').addClass('listing-hide');
+    $('#listing-'+listing_id).removeClass('listing-unread');
     setTimeout(function() {
       $.get( 'listings/' + listing_id, function(data) {
         makeMap("32-124");
