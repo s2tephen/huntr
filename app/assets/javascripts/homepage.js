@@ -3,9 +3,6 @@ $(document).ready(function() {
   $('#listingdetail').slideUp();
   $('#listingdetail').removeClass('listingview');
   
-  // Attach event listeners
-  
-  
   //toggle show/hide for favorites
   $('#favsbutton').click(function(){
     if ($(this).hasClass('showfavs')) {
