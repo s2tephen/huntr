@@ -3,6 +3,7 @@ require 'test_helper'
 class ListingsControllerTest < ActionController::TestCase
   setup do
     @listing = listings(:one)
+    @listings = listings
   end
 
   test "should get index" do
@@ -45,5 +46,12 @@ class ListingsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to listings_path
+  end
+
+  test "should update results based on search" do
+    @query = 'nyc'
+    #do someting here...but weird since don't have "listings"
+    get :search_results, query: @query
+    #assert
   end
 end

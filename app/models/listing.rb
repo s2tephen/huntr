@@ -31,6 +31,8 @@ class Listing < ActiveRecord::Base
     end
   end
 
+  # action called by favorite button
+  # toggles favorite status
 	def favorite(user)
 		listing = Listing.find(self.id)
 		if user.favorites.include?(listing)

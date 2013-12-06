@@ -13,3 +13,17 @@ two:
   location: MyString
   body: MyText
   category: MyString
+  
+three:
+  name: MyString
+  time: 2013-11-12 23:17:00
+  location: MyString
+  body: This is an event in NYC
+  category: event
+
+four:
+  name: MyString
+  time: 2013-11-12 23:17:00
+  location: MyString
+  body: MyText
+  category: urop
