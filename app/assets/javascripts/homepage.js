@@ -17,7 +17,7 @@ $(document).ready(function() {
   });
 
   //show calendar
-  $('#viewcal').click(function(){
+  $('#view-cal').click(function(){
     $('#listing').fadeOut(650, $('#calendar').fadeIn(650));
   });
 
