@@ -26,7 +26,12 @@ class ListingsController < ApplicationController
     @listings = Listing.order(updated_at: :desc)
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @month_listings = Listing.where('extract(month from updated_at) = ? AND extract(year from updated_at) = ?', 
-      Date.today.month, Date.today.year)
+      @date.month, @date.year)
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
   
   # GET /listings/1

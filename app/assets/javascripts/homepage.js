@@ -15,12 +15,7 @@ $(document).ready(function() {
       $(this).text('hide');
     }
   });
-
-  //show calendar
-  $('#view-cal').click(function(){
-    $('#listing').fadeOut(650, $('#calendar').fadeIn(650));
-  });
-
+  
   //show listing detail
   $('.listing-area').click(function(){
     //insert ajax to do following line
@@ -29,9 +24,10 @@ $(document).ready(function() {
     $('#listing-'+listing_id).removeClass('listing-unread');
     setTimeout(function() {
       $.get( 'listings/' + listing_id, function(data) {
-        makeMap("32-124");
         $('#listing').html(data);
+        makeMap("32-124");
         $('#listing').removeClass('listing-hide').addClass('listing-show');
+        $('#calendar').hide();
       });
     }, 300);
   });
