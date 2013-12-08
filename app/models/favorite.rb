@@ -7,4 +7,10 @@ class Favorite < ActiveRecord::Base
 	  	self.read = true
 	  	self.save
 	 end
+
+	 # mark listing as unread (called by update from listing)
+	 def mark_read
+	  	self.read = false
+	  	self.save
+	 end
 end
