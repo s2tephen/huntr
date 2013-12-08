@@ -1,13 +1,15 @@
 $(document).ready(function() {
+  // Favorite button
   $('.list-star').click(toggleFavorited);
   
-  //show calendar
+  // Shows calendar, hides listing
   $('#view-cal').click(function(){
     $('#listing').removeClass('listing-show').addClass('make_transist').addClass('listing-hide');
     $('#calendar').show();
   });
 });
 
+// Creates a Google Map for the event's location
 var makeMap = function(location) {
   $.ajax({
     url: "http://whereis.mit.edu/search/",
