@@ -13,10 +13,9 @@ class Listing < ActiveRecord::Base
                                 :enable_ssl => true }
     end
 
-    Mail.all.each do |m| # TODO: unread only, all for seeds.rb
-      if m.sender == 'eecs-jobs-announce@lists.csail.mit.edu' # only accept emails from mailman list
+    Mail.find keys: ['NOT', 'SEEN'].each do |m|
+      if m.sender == 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
         Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
-          puts l.name
           is_event = false # is true if subject contains a valid date
           date = l.name.match(/\d{1,2}\/\d{1,2}/).to_s
           if date.empty?
