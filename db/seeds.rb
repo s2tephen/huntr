@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+require 'mail'
+
 Mail.defaults do
   retriever_method :imap, { :address    => 'imap.gmail.com',
                             :port       => 993,
@@ -16,7 +18,7 @@ end
 
 # TODO: update this any time Listing.fetch is updated
 Mail.all.each do |m|
-  if m.sender == 'eecs-jobs-announce@lists.csail.mit.edu' # only accept emails from mailman list
+  if m.sender == 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
     Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
       puts l.name
       is_event = false # is true if subject contains a valid date
