@@ -13,4 +13,5 @@ Huntr::Application.routes.draw do
 
   # redirect non-existent pages to root
   get '*path' => redirect('/')
+  match "cal", to: "listings#cal", via: :get
 end

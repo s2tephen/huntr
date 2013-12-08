@@ -3,19 +3,6 @@ require 'textacular/tasks'
 class ListingsController < ApplicationController
   #before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
-  # search results
-  def search_results
-    @listings = current_user.query_listings(params[:category], params[:query])
-    render :layout => false
-  end
-  
-  # favorite/unfavorite listing
-  def favorites
-    current_user.favorite(Listing.find(params[:listing_id]))
-    @fav_listings = current_user.listings
-    render :layout => false
-  end
-
   # GET /listings
   # GET /listings.json
   def index
@@ -24,11 +11,6 @@ class ListingsController < ApplicationController
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @month_listings = Listing.where('extract(month from updated_at) = ? AND extract(year from updated_at) = ?', 
       @date.month, @date.year)
-    
-    respond_to do |format|
-      format.html
-      format.js
-    end
   end
   
   # GET /listings/1
@@ -61,6 +43,26 @@ class ListingsController < ApplicationController
         format.json { render json: @listing.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  # search results
+  def search_results
+    @listings = current_user.query_listings(params[:category], params[:query])
+    render :layout => false
+  end
+  
+  # favorite/unfavorite listing
+  def favorites
+    current_user.favorite(Listing.find(params[:listing_id]))
+    @fav_listings = current_user.listings
+    render :layout => false
+  end
+  
+  def cal
+    @date = params[:month] ? Date.parse(params[:month]) : Date.today
+    @month_listings = Listing.where('extract(month from updated_at) = ? AND extract(year from updated_at) = ?', 
+      @date.month, @date.year).order(updated_at: :asc)
+    render :layout => false
   end
 
   # PATCH/PUT /listings/1
