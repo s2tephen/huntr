@@ -3,35 +3,67 @@ class Listing < ActiveRecord::Base
   has_many :users, through: :favorites
 
   def self.fetch
+    require 'date'
+
     Mail.defaults do
-      retriever_method :pop3, { :address    => "pop.gmail.com",
-                                :port       => 995,
-                                :user_name  => ENV["GMAIL_USERNAME"],
-                                :password   => ENV["GMAIL_PASSWORD"],
+      retriever_method :imap, { :address    => 'imap.gmail.com',
+                                :port       => 993,
+                                :user_name  => 'huntr.gathrr@gmail.com',
+                                :password   => 'ys.js@mit.edu',
                                 :enable_ssl => true }
     end
 
     Mail.all.each do |m|
-      Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
-        # TODO: time, location
-        l.updated_at = m.date
-        begin
-          l.body = m.parts[0].parts[0].decoded
-        rescue => e
-          puts 'error in email: ' + l.name # error message
+      if m.sender == 'eecs-jobs-announce@lists.csail.mit.edu' # only accept emails from mailman list
+        Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
+          puts l.name
+          is_event = false # is true if subject contains a valid date
+          date = l.name.match(/\d{1,2}\/\d{1,2}/).to_s
+          if date.empty?
+            if l.name.match(/today/i)
+              date = Date.today.to_s
+              is_event = true
+            end
+          else
+            is_event = true
+          end
+
+          if is_event
+            # round to next year if date has passed
+            if DateTime.parse(date) < Time.now
+              date = (DateTime.parse(date) + 1.year).to_date.to_s
+            end
+
+            # dat regex — returns two groupings: start time and (optionally) end time
+            time = l.name.match(/(?<=, )(\d{1,2}(?!\/)(?::\d{2})?(?!\d)\s?(?:am|pm)?)(\s?-\s?\d{1,2}(?::\d{2})?(?!\d)\s?(?:am|pm)?)?/i)
+            unless time.nil?
+              if time[2].nil? # start time only
+                l.start_time = DateTime.parse(date + ' ' + time[1], :datetime)
+                l.end_time = l.start_time + 1.hour # default to 1 hour
+              else # end time specified
+                cleaned_end = time[2].split('-')[1].lstrip # remove leading hyphen/whitespace
+                l.end_time = DateTime.parse(date + ' ' + cleaned_end, :datetime)
+                if time[1].match(/am|pm/i).nil?
+                  l.start_time = DateTime.parse(date + ' ' + time[1] + cleaned_end.match(/am|pm/i).to_s, :datetime) # e.g. 1-2pm
+                else
+                  l.start_time = DateTime.parse(date + ' ' + time[1], :datetime) # e.g. 11am-1pm
+                end
+              end
+            end
+          end
+
+          l.updated_at = m.date # use date/time of email
+
+          begin
+            l.body = m.parts[0].parts[0].decoded
+          rescue => e
+            puts 'error in email: ' + l.name # error message
+          end
+
+          # TODO: category
+          # TODO: food
         end
-        # TODO: category
-        # TODO: food
-        # RiCal.Calendar do |ics_file|
-          # ics_file.event do |event|
-            # event.description = l.name
-            # event.dtstart = DateTime.current
-            # event.location = "77 Mass Ave"
-          # end
-        # end
-        # l.ics = ics_file
       end
     end
   end
-
 end
