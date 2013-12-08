@@ -16,6 +16,5 @@ Huntr::Application.routes.draw do
   get '*path' => redirect('/')
 
   # blacklist controller method
-  map.blacklist 'blacklist/:confirmation_token',
-    :controller => 'confirmations', :action => 'blacklist'
+  get 'blacklist/:confirmation_token', to: 'confirmations#blacklist'
 end
