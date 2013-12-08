@@ -24,4 +24,17 @@ class User < ActiveRecord::Base
   	end
   end
 
+  # method to filter listings by category
+  # takes category:string query:string as inputs
+  # returns relevant_listings
+  def query_listings(category, query)
+    @relevant_listings = Listing.all
+    if category
+      @relevant_listings = relevant_listings.where(:category => category)
+    end
+    if query
+      @relevant_listings = relevant_listings.basic_search(query)
+    end
+    return @relevant_listings
+  end
 end
