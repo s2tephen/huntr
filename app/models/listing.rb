@@ -17,7 +17,7 @@ class Listing < ActiveRecord::Base
       if m.sender == 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
         Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
           is_event = false # is true if subject contains a valid date
-          date = l.name.match(/\d{1,2}\/\d{1,2}/).to_s
+          date = l.name.match(/(?<=, )\d{1,2}\/\d{1,2}/).to_s
           if date.empty?
             if l.name.match(/today/i)
               date = Date.today.to_s

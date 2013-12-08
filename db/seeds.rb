@@ -17,12 +17,14 @@ Mail.defaults do
 end
 
 # TODO: update this any time Listing.fetch is updated
+puts 'Seeding db (fetching all mail) — this could take a while!'
+
 Mail.all.each do |m|
   if m.sender == 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
     Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
-      puts l.name
+      puts '  ' + l.name
       is_event = false # is true if subject contains a valid date
-      date = l.name.match(/\d{1,2}\/\d{1,2}/).to_s
+      date = l.name.match(/(?<= )\d{1,2}\/\d{1,2}/).to_s
       if date.empty?
         if l.name.match(/today/i)
           date = Date.today.to_s
@@ -56,6 +58,8 @@ Mail.all.each do |m|
           # timezone shift
           l.start_time += 5.hours
           l.end_time += 5.hours
+          puts '    start_time: ' + l.start_time.to_s
+          puts '    end_time: ' + l.end_time.to_s
         end
       end
 
