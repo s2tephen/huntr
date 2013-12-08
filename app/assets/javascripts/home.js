@@ -1,18 +1,21 @@
 $(document).ready(function() {
-  //toggle show/hide for favorites
+  // Show/hide favorites button
   $('#favsbutton').click(showHideFavs);
   
+  // AJAX call for search results
   $(document).on('ajax:success', '#search_results', function(e, data, status, xhr){
     $('#feedlist').html(xhr.responseText);
   });
 });
 
+// Toggles a favorited listing's star, refreshes the favorites summary
 var toggleFavorited = function() {
   var listingID = $(this).attr('id').split('-')[2];
   updateStar(listingID);
   reloadFavorites(listingID);
 };
 
+// Reloads the favorites summary
 var reloadFavorites = function(listingID) {
   $.ajax({
     url: "favorites",
@@ -22,6 +25,7 @@ var reloadFavorites = function(listingID) {
   });
 };
 
+// Reloads the listings summary
 var reloadListings = function() {
   $.ajax({
     url: "search_results",
@@ -30,6 +34,7 @@ var reloadListings = function() {
   });
 };
 
+// Displays a single listing in the right pane
 var showListing = function() {
   var listingID = $(this).attr('id').split('-')[1];
   $('#listing').removeClass('listing-show').addClass('make_transist listing-hide');
@@ -44,10 +49,12 @@ var showListing = function() {
   }, 300);
 };
 
+// Toggles the color of all the favorite buttons for a listing
 var updateStar = function(listingID) {
   $('.listing-'+listingID).toggleClass('fa-star fa-star-o');
 };
 
+// Show/hide the favorites summary
 var showHideFavs = function() {
   if ($('#favslist').is(":visible")) {
     $('#favslist').slideUp();

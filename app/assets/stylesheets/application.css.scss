@@ -9,10 +9,11 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require listings
+ *= require listing
  *= require login
  *= require font-awesome
  *= require calendar
+ *= require home
  */
 
 @import "bootstrap";

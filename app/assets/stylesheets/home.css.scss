@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.left-pane {
+  padding-right: 30px;  
+}
+
 .section {
 	border: 2px solid #333333;
 	border-radius: 4px;
@@ -9,6 +13,13 @@
 
 .section-header {
   padding: 10px 0;
+}
+
+.header-text {
+  font-size: 2em;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 5px;
 }
 
 // Listings summary
@@ -41,38 +52,9 @@
 		  display: table-cell;
       vertical-align: middle;
 		}
-	}
-}
-
-.pane-right {
-	-webkit-transition: all .3s ease-in-out;
-	-moz-transition: all .3s ease-in-out;
-	-o-transition: all .3s ease-in-out;
-	-ms-transition: all .3s ease-in-out;
-	transition: all .3s ease-in-out;
-
-	-webkit-transition-delay: .3s;
-	-moz-transition-delay: .3s;
-	-o-transition-delay: .3s;
-	-ms-transition-delay: .3s;
-	transition-delay: .3s;
-	#listing {
-		padding-left: 30px;
-		padding-bottom: 30px;
-		h2 {
-			margin-top: 0;
-			font-weight: bold;
+		.fa-star {
+		  color: #FFFF99;
 		}
-		p {
-			font-size: 1.1em;
-		}
-    #location-map {
-      height: 150px;
-    }
-    .listing-body {
-      max-height: 350px;
-      overflow-y: auto;
-    }
 	}
 }
 
