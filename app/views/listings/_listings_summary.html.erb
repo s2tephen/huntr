@@ -1,0 +1,18 @@
+<% @listings.each do |listing| %>
+<div class="col-md-12 btn btn-default listing-area" id="listing-<%= listing.id %>">
+  <div class="listing-details" >
+    <h3 class="listing-name"><%= listing.name %></h3>
+    <p class="listing-meta">
+      <i class="fa fa-calendar-o"></i> <%= listing.updated_at.strftime("%b %e — %l:%M %p") %>
+      <%= listing.category %>
+    </p>
+  </div>
+  <div class="listing-favorite">
+    <% if current_user.listings.include?(listing) %>
+      <i class="fa fa-lg fa-star listing-star listing-<%= listing.id %>" id='fav-button-<%= listing.id %>'></i>
+    <% else %>
+      <i class="fa fa-lg fa-star-o listing-star listing-<%= listing.id %>" id='fav-button-<%= listing.id %>'></i>
+    <% end %>
+  </div>
+</div>
+<% end %>

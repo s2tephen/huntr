@@ -1,4 +1,5 @@
-<%= javascript_include_tag "listings" %>
+<%= javascript_include_tag "listing" %>
+<%= javascript_include_tag "http://js.addthisevent.com/atemay.js" %>
 
 <div class="row">
   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">LISTING</div>
@@ -8,7 +9,14 @@
 </div>
 
 <div class="listing-header">
-  <h2><%= @listing.name %></h2>
+  <div class="listing-name" style="display:inline-block"><h2><%= @listing.name %></h2></div>
+  <div class="listing-star" style="display:inline-block;float:right">
+    <% if current_user.listings.include?(@listing) %>
+      <i class="fa fa-2x fa-star list-star listing-<%= @listing.id %>" id='fav-button-<%= @listing.id %>'></i>
+    <% else %>
+      <i class="fa fa-2x fa-star-o list-star listing-<%= @listing.id %>" id='fav-button-<%= @listing.id %>'></i>
+    <% end %>
+  </div>
   <div><%= @listing.start_time %> — <%= @listing.end_time %></div>
 </div>
 
@@ -22,11 +30,17 @@
     <div>Event Details</div>
     <div><span class="qv-detail"></span>Time: <%= @listing.start_time %> - <%= @listing.end_time %></div>
     <div>Location: <%= @listing.location %></div>
-    <div>Sponsors:</div>
    
-    <%= link_to 'http://www.google.com/calendar/event?action=TEMPLATE&text='+@listing.name+'&dates=20140106T053000Z/20140106T060000Z&details=&location=32-124&trp=false&sprop=&sprop=name:', class: 'btn btn-default', target: '_blank' do %>
-      <%= image_tag('gcal.png') %> Add to Google Calendar
-    <% end %>
+    <a title="Add to Calendar" class="addthisevent">
+      Add to Calendar
+      <span class="_start"><%= @listing.updated_at.to_formatted_s(:db) %></span>
+      <span class="_end"><%= @listing.updated_at.to_formatted_s(:db) %></span>
+      <span class="_zonecode">15</span>
+      <span class="_summary"><%= @listing.name %></span>
+      <span class="_location"><%= @listing.location %></span>
+      <span class="_all_day_event">false</span>
+      <span class="_date_format">MM/DD/YYYY</span>
+    </a>
   </div>
 </div>
 

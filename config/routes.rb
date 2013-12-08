@@ -9,5 +9,5 @@ Huntr::Application.routes.draw do
   root :to => 'listings#index'
   
   match "search_results", to: "listings#search_results", via: :get
-  match "fav_listing", to: "listings#fav_listing", via: :get
+  match "favorites", to: "listings#favorites", via: :get
 end

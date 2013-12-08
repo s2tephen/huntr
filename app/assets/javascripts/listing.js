@@ -1,3 +1,7 @@
+$(document).ready(function() {
+  $('.list-star').click(toggleFavorited);
+});
+
 var makeMap = function(location) {
   $.ajax({
     url: "http://whereis.mit.edu/search/",
@@ -23,11 +27,3 @@ var makeMap = function(location) {
     });
   });
 };
-
-$(document).ready(function() {
-  //show calendar
-  $('#view-cal').click(function(){
-    $('#listing').removeClass('listing-show').addClass('make_transist').addClass('listing-hide');
-    $('#calendar').show();
-  });
-});

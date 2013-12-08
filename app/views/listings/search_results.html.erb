@@ -1,5 +1,7 @@
+<%= javascript_include_tag "listings_summary"%>
+
 <% if @listings.length == 0 %>
   No results found.
 <% else %>
-  <%= render 'listingssummary' %>
+  <%= render 'listings_summary' %>
 <% end %>

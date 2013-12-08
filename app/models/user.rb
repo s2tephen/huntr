@@ -32,9 +32,9 @@ class User < ActiveRecord::Base
     if category
       @relevant_listings = relevant_listings.where(:category => category)
     end
-    if query
+    if query and query.length > 0
       @relevant_listings = relevant_listings.basic_search(query)
     end
-    return @relevant_listings
+    return @relevant_listings.order(updated_at: :desc)
   end
 end

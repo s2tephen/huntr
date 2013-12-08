@@ -1,43 +1,46 @@
 <div class="container">
   <div class="row">
+    <!-- Favorites summary -->
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
       <div class="row section-header">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 header-text">FAVORITES</div>
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <div class="showfavs rt-btn btn btn-default" id="favsbutton"> hide </div>
+          <div class="rt-btn btn btn-default" id="favsbutton"> hide </div>
         </div>
       </div>
-    <div class="row listing-container" id="favslist">
-      <%= render "favssummary" %>
-    </div>
+      <div class="row listing-container" id="favslist">
+        <%= render "favs_summary" %>
+      </div>
       
-
       <div class="row section-header" name="listings">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 header-text"> FEED </div>
+        <!-- Search listings form -->
         <%= form_tag url_for(:controller => 'listings', :action => 'search_results'), :method=>:get, :remote=>true, :id => "search_results" do  %>
           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 input-group input-group-sm">
             <span class="input-group-addon glyphicon glyphicon-search"></span>
             <%= text_field_tag :query, params[:query], class: "form-control" %>
-    
           </div>
           <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6"><%= submit_tag "Search", :name => nil, class: "rt-btn btn btn-default" %></div>
         <% end %>
       </div>
+      
+      <!-- Listings summary -->
       <div class="row listing-container" id="feedlist">
-        <%= render "listingssummary" %>
+        <%= render "listings_summary" %>
       </div>
       
+      <!-- Page footer -->
       <div class="row footer">
         &copy; 2013 Huntr <span>•</span> Anne Hunter has sent <%= pluralize(Listing.where(updated_at: Time.now.midnight..Time.now).length, 'email') %> today.
       </div>
     </div>
 
+    <!-- Right pane -->
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <div class="row pane-right">
-        <div id="calendar" class="showleft"><%= render "calendar" %></div>
-        <div id="listing" class="showleft"></div>
+        <div id="calendar"><%= render "calendar" %></div>
+        <div id="listing"></div>
       </div>
-      <!-- ajax display listing detail?-->
     </div>
   </div>
 </div>
