@@ -1,3 +1,5 @@
+require 'textacular/tasks'
+
 class ListingsController < ApplicationController
   #before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
@@ -8,7 +10,7 @@ class ListingsController < ApplicationController
   end
   
   # favorite/unfavorite listing
-  def fav_listing    
+  def favorites
     current_user.favorite(Listing.find(params[:listing_id]))
     @fav_listings = current_user.listings
     render :layout => false

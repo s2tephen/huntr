@@ -33,6 +33,14 @@
 				margin-right: 5px;
 			}
 		}
+		.listing-details, .fav-listing-details {
+		  display: table-cell;
+		  width: 95%;
+		}
+		.listing-favorite {
+		  display: table-cell;
+      vertical-align: middle;
+		}
 	}
 }
 
