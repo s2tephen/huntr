@@ -4,6 +4,15 @@ Huntr::Application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+  
+  # Load environment variables
+  config.before_configuration do
+    env_file = File.join(Rails.root, 'config', 'local_env.yml')
+    YAML.load(File.open(env_file)).each do |key, value|
+      ENV[key.to_s] = value
+    end if File.exists?(env_file)
+  end
+  
   config.cache_classes = false
 
   # Do not eager load code on boot.
@@ -14,7 +23,7 @@ Huntr::Application.configure do
   config.action_controller.perform_caching = false
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -37,13 +46,6 @@ Huntr::Application.configure do
     :user_name            => ENV['GMAIL_USERNAME'],
     :password             => ENV['GMAIL_PASSWORD'],
     :authentication       => 'plain',
-    :enable_starttls_auto => true }
+    :enable_starttls_auto => true}
 
-  # Load environment variables
-  config.before_configuration do
-    env_file = File.join(Rails.root, 'config', 'local_env.yml')
-    YAML.load(File.open(env_file)).each do |key, value|
-      ENV[key.to_s] = value
-    end if File.exists?(env_file)
-  end
 end

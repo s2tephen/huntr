@@ -13,8 +13,9 @@ Huntr::Application.routes.draw do
   match "cal", to: "listings#cal", via: :get
 
   # redirect non-existent pages to root
-  get '*path' => redirect('/')
+  #get '*path' => redirect('/')
 
   # blacklist controller method
-  get 'blacklist/:confirmation_token', to: 'confirmations#blacklist'
+  #get 'blacklist/:confirmation_token', to: 'confirmations#blacklist'
+  match 'blacklist', to: 'confirmations#blacklist', via: :get
 end
