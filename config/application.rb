@@ -20,7 +20,5 @@ module Huntr
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
     config.time_zone = 'Eastern Time (US & Canada)'
-    Timeliness.default_timezone = :current
-    Timeliness.date_for_time_type = lambda { Time.now }
   end
 end

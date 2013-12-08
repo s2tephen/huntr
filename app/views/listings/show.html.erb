@@ -9,7 +9,7 @@
 
 <div class="listing-header">
   <h2><%= @listing.name %></h2>
-  <div>TIME HERE<%= @listing.time %></div>
+  <div><%= @listing.start_time %> — <%= @listing.end_time %></div>
 </div>
 
 <div class="listing-body">
@@ -20,7 +20,7 @@
   <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="location-map"></div>
   <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
     <div>Event Details</div>
-    <div><span class="qv-detail"></span>Time: <%= @listing.time %></div>
+    <div><span class="qv-detail"></span>Time: <%= @listing.start_time %> - <%= @listing.end_time %></div>
     <div>Location: <%= @listing.location %></div>
     <div>Sponsors:</div>
    

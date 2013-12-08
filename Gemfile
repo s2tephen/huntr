@@ -27,7 +27,6 @@ gem 'mail'
 
 # NLP gems
 gem 'nbayes' # classification
-gem 'timeliness' # date/time
 gem 'fuzzy_match' # similarity
 
 # Use SCSS for stylesheets
