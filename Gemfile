@@ -17,6 +17,7 @@ gem 'simple_form'
 # Use devise for users/permissions
 gem 'devise'
 
+# Calendar building
 gem "watu_table_builder", :require => "table_builder"
 
 # For text searching in database

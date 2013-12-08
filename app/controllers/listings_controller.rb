@@ -1,19 +1,21 @@
+require 'textacular/tasks'
+
 class ListingsController < ApplicationController
   #before_action :set_listing, only: [:show, :edit, :update, :destroy]
 
   # search results
   def search_results
     @query = params[:query]
-    if @query
-      @listings = Listing.basic_search(@query)
+    if @query and @query.length > 0
+      @listings = Listing.basic_search(@query).order(updated_at: :desc)
     else
-      @listings = Listing.all
+      @listings = Listing.order(updated_at: :desc)
     end
     render :layout => false
   end
   
   # favorite/unfavorite listing
-  def fav_listing    
+  def favorites
     current_user.favorite(Listing.find(params[:listing_id]))
     @fav_listings = current_user.listings
     render :layout => false
