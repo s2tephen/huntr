@@ -8,12 +8,12 @@ class Listing < ActiveRecord::Base
     Mail.defaults do
       retriever_method :imap, { :address    => 'imap.gmail.com',
                                 :port       => 993,
-                                :user_name  => 'huntr.gathrr@gmail.com',
-                                :password   => 'ys.js@mit.edu',
+                                :user_name  => ENV['GMAIL_USERNAME'],
+                                :password   => ENV['GMAIL_PASSWORD'],
                                 :enable_ssl => true }
     end
 
-    Mail.all.each do |m|
+    Mail.all.each do |m| # TODO: unread only, all for seeds.rb
       if m.sender == 'eecs-jobs-announce@lists.csail.mit.edu' # only accept emails from mailman list
         Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
           puts l.name
@@ -49,6 +49,9 @@ class Listing < ActiveRecord::Base
                   l.start_time = DateTime.parse(date + ' ' + time[1], :datetime) # e.g. 11am-1pm
                 end
               end
+              # timezone shift
+              l.start_time += 5.hours
+              l.end_time += 5.hours
             end
           end
 
