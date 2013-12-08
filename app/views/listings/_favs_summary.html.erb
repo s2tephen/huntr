@@ -1,10 +1,10 @@
 <% @fav_listings.each do |listing| %>
   <% if Favorite.where(:user == current_user, :listing == listing) %>
-    <div class="col-md-12 btn btn-default listing-area" id="listing-<%= listing.id %>">
+    <div class="col-md-12 btn btn-default listing-area">
   <% else %>
-    <div class="col-md-12 btn btn-default listing-area listing-unread" id="listing-<%= listing.id %>">
+    <div class="col-md-12 btn btn-default listing-area listing-unread">
   <% end %>
-      <div class="fav-listing-details">
+      <div class="fav-listing-details" id="listing-<%= listing.id %>">
         <h3 class="listing-name"><%= listing.name %></h3>
         <p class="listing-meta">
           <i class="fa fa-calendar-o"></i> <%= listing.updated_at.strftime("%b %e — %l:%M %p") %>

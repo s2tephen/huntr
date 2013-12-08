@@ -1,6 +1,6 @@
 <% @listings.each do |listing| %>
-<div class="col-md-12 btn btn-default listing-area" id="listing-<%= listing.id %>">
-  <div class="listing-details" >
+<div class="col-md-12 btn btn-default listing-area">
+  <div class="listing-details" id="listing-<%= listing.id %>">
     <h3 class="listing-name"><%= listing.name %></h3>
     <p class="listing-meta">
       <i class="fa fa-calendar-o"></i> <%= listing.updated_at.strftime("%b %e — %l:%M %p") %>

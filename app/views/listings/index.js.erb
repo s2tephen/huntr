@@ -1,11 +1,1 @@
-// prev/next month buttons for calendar
-$(document).ready(function() {
-  console.log("hello there");
-  $('#prev-month').click(renderCal);
-  $('#next-month').click(renderCal);
-});
 
-var renderCal = function() {
-  console.log("button clicked");
-  $('#calendar').html("<%= j render 'calendar' %>");
-};
