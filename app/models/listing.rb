@@ -69,4 +69,15 @@ class Listing < ActiveRecord::Base
       end
     end
   end
+  
+  # method to update listing when Anne send seond email about same thing
+  def update_listing
+    #TODO: edit the data for listing itself!
+
+    #set read boolean to false if favorited by anyone
+    @favorites = Favorite.find_by_listing_id(self.id)
+    for favorite in @favorites
+      favorite.mark_unread
+    end
+  end
 end

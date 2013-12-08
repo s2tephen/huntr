@@ -5,12 +5,7 @@ class ListingsController < ApplicationController
 
   # search results
   def search_results
-    @query = params[:query]
-    if @query and @query.length > 0
-      @listings = Listing.basic_search(@query).order(updated_at: :desc)
-    else
-      @listings = Listing.order(updated_at: :desc)
-    end
+    @listings = current_user.query_listings(params[:category], params[:query])
     render :layout => false
   end
   
