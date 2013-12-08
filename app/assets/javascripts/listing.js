@@ -1,3 +1,7 @@
+$(document).ready(function() {
+  $('.list-star').click(toggleFavorited);
+});
+
 var makeMap = function(location) {
   $.ajax({
     url: "http://whereis.mit.edu/search/",
