@@ -37,4 +37,9 @@ class User < ActiveRecord::Base
     end
     return @relevant_listings.order(updated_at: :desc)
   end
+
+  # keeps track of user status (for blacklisting email trolls)
+  def active_for_authentication?
+    super and self.active?
+  end
 end

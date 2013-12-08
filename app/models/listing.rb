@@ -2,6 +2,9 @@ class Listing < ActiveRecord::Base
   has_many :favorites
   has_many :users, through: :favorites
 
+  # poll the mail server for unread emails + update db
+  # process emails, populate relevant fields
+  # run by a scheduled rake task (via heroku scheduler)
   def self.fetch
     require 'date'
 
@@ -83,7 +86,7 @@ class Listing < ActiveRecord::Base
     end
   end
   
-  # method to update listing when Anne send seond email about same thing
+  # method to update listing when Anne send second email about same thing
   def update_listing
     #TODO: edit the data for listing itself!
 

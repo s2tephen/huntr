@@ -3,3 +3,7 @@
 <p>You can confirm your account email through the link below:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
+
+<p>If you didn't register for this service, click the link below to opt-out:</p>
+
+<p><%= link_to 'Cancel my account', blacklist_url(@resource, :confirmation_token => @token) %></p>
