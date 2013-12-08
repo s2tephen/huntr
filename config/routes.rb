@@ -10,8 +10,8 @@ Huntr::Application.routes.draw do
   
   match "search_results", to: "listings#search_results", via: :get
   match "favorites", to: "listings#favorites", via: :get
+  match "cal", to: "listings#cal", via: :get
 
   # redirect non-existent pages to root
   get '*path' => redirect('/')
-  match "cal", to: "listings#cal", via: :get
 end

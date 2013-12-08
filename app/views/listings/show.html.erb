@@ -20,13 +20,12 @@
   <div><%= @listing.start_time %> — <%= @listing.end_time %></div>
 </div>
 
-<div class="listing-body">
-<%= simple_format(@listing.body) %>
-</div>
-
-<% if @listing.location %>
+<% if @listing.location? %>
+  <div class="listing-body partial-height">
+    <%= simple_format(@listing.body) %>
+  </div>
   <div class="row listing-event-details">
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="location-map"></div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" id="location-map" data-loc="<%= @listing.location %>"></div>
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
       <div>Event Details</div>
       <div><span class="qv-detail"></span>Time: <%= @listing.start_time %> - <%= @listing.end_time %></div>
@@ -44,6 +43,9 @@
       </a>
     </div>
   </div>
+<% else %>
+  <div class="listing-body full-height">
+    <%= simple_format(@listing.body) %>
+  </div>
 <% end %>
-
 

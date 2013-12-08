@@ -24,10 +24,10 @@
       height: 150px;
     }
     .listing-body {
-      &.full-width {
+      &.full-height {
         max-height: 500px;
       }
-      &.part-width {
+      &.partial-height {
         max-height: 350px;
       }
       overflow-y: auto;
