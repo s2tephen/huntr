@@ -38,6 +38,10 @@ class ListingsController < ApplicationController
   # GET /listings/1.json
   def show
     @listing = Listing.find(params[:id])
+    @favorite = current_user.favorites.find_by_listing_id(params[:id])
+    if @favorite != nil
+      @favorite.mark_read
+    end
     render :layout => false
   end
 
