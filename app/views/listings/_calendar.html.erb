@@ -9,7 +9,7 @@
     <%= date.day %>
     <ul>
       <% for listing in month_listings %>
-        <li class="listing-details" id="listing-<%= listing.id %>"><%= h(listing.name) %></li>
+        <li class="listing-bullet" id="listing-<%= listing.id %>">9pm <%= h(listing.name) %></li>
       <% end %>
     </ul>
   <% end %>
