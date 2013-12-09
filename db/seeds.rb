@@ -26,7 +26,7 @@ event_vocab = ['talk', 'event', 'panel', 'infosession', 'conference', 'study bre
 external_opp_vocab = ['intern', 'interns', 'internship', 'internships', 'externship', 'externships', 'startup',
   'fellowship', 'fellowships', 'job', 'jobs', 'opportunity', 'part-time', 'full-time', 'program', 'apply',
   'application', 'applications', 'developer', 'developers', 'engineer', 'engineers', 'position', 'positions']
-campus_opp_vocab = ['UROP', 'UROPs', 'TA', 'TAs', 'grader', 'graders', 'UAP', 'UAPs', 'SuperUROP', 'SuperUROPs',
+campus_opp_vocab = ['urop', 'urops', 'ta', 'tas', 'grader', 'graders', 'uap', 'uaps', 'superurop', 'superurops',
   'apply', 'application', 'applications']
 
 nbayes.train(event_vocab, 'event')
@@ -110,7 +110,7 @@ Mail.all.each do |m|
       # naive bayes classification
       l.category = 'other'
       unless l.name.nil?
-        tokens = l.name.gsub(/\W/, ' ').split(/ /)
+        tokens = l.name.gsub(/\.|,|:|!/, ' ').split(/ /).map(&:downcase)
         result = nbayes.classify(tokens)
         nbayes.train(tokens, result.max_class)
         l.category = result.max_class
