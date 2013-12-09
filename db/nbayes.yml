@@ -713,10 +713,55 @@ vocab:
   StartIAP: 1
   en: 1
   mellos: 1
+  iap: 1
+  s41: 1
+  negotiation: 1
+  influence: 1
+  alexix: 1
+  ohanian: 1
+  reddit: 1
+  founder: 1
+  mit: 1
+  sat: 1
+  12/7: 1
+  paid: 1
+  sw: 1
+  dec: 1
+  /jan: 1
+  crowd: 1
+  comfort: 1
+  morgan: 1
+  stanley: 1
+  anatomy: 1
+  deal: 1
+  urop: 1
+  all-electronic: 1
+  protein: 1
+  nomination: 1
+  inspirational: 1
+  teacher: 1
+  award: 1
+  12/16: 1
+  boston-based: 1
+  technical: 1
+  federated: 1
+  wireless: 1
+  (no: 1
+  subject): 1
+  space: 1
+  optics: 1
+  adaptive: 1
+  associates: 1
+  xinetics: 1
+  data: 1
+  scientist: 1
+  loci: 1
+  controls: 1
+  boston: 1
 data:
   event:
     :tokens:
-      talk: 1
+      talk: 2
       event: 2
       panel: 1
       infosession: 1
@@ -726,7 +771,7 @@ data:
       Paid: 2
       Job: 4
       Internship: 3
-      '': 299
+      '': 313
       MIT: 31
       Political: 1
       Social: 1
@@ -776,17 +821,17 @@ data:
       Faculty: 1
       Club: 1
       SW: 15
-      and: 20
+      and: 21
       Infrastructure: 1
       Engineersk: 1
       Bizo: 1
       Alums: 1
-      the: 9
+      the: 10
       Game: 3
       Industry: 2
       Talk: 7
       '25': 1
-      '5': 7
+      '5': 8
       '32': 3
       '155': 2
       Spring: 2
@@ -804,7 +849,7 @@ data:
       Africa: 1
       Apply: 5
       by: 5
-      '15': 5
+      '15': 6
       Sunday: 2
       '17': 2
       to: 8
@@ -829,7 +874,7 @@ data:
       East: 2
       InfoSession: 2
       Friday: 2
-      pm: 4
+      pm: 5
       '1': 5
       '135': 1
       Pandora: 2
@@ -880,7 +925,7 @@ data:
       backed: 2
       metamaterials: 1
       imaging: 1
-      detection: 1
+      detection: 2
       company: 1
       PHP: 1
       OAuth2: 1
@@ -893,7 +938,7 @@ data:
       TODAY: 3
       CTO: 2
       VP: 1
-      of: 9
+      of: 10
       Technology: 2
       WiGO: 1
       Boston: 8
@@ -961,7 +1006,7 @@ data:
       JP: 1
       Morgan: 3
       Launch: 1
-      a: 7
+      a: 8
       Successful: 1
       'on': 3
       Kickstarter: 1
@@ -1004,7 +1049,7 @@ data:
       subject: 1
       Reminder: 1
       Mixer: 1
-      at: 9
+      at: 10
       '34': 1
       401A: 1
       Grier: 1
@@ -1067,7 +1112,7 @@ data:
       upcoming: 1
       deadlines: 1
       scholarships: 1
-      internships: 2
+      internships: 3
       happy: 1
       Thanksgiving: 1
       Nodespan: 1
@@ -1148,14 +1193,14 @@ data:
       Ann: 1
       Wollrath: 1
       Early: 1
-      developer: 1
+      developer: 2
       Java: 1
       Sun: 2
       Microsystems: 1
       http: 1
       reserve: 1
       spot: 1
-      today: 2
+      today: 3
       Sat: 2
       February: 1
       8th: 1
@@ -1296,8 +1341,8 @@ data:
       Alexix: 1
       Ohanian: 1
       Reddit: 1
-      speaking: 1
-      late: 1
+      speaking: 2
+      late: 2
       Dec: 1
       Jan: 1
       Crowd: 1
@@ -1338,8 +1383,50 @@ data:
       StartIAP: 1
       en: 1
       mellos: 1
-    :total_tokens: 1480
-    :examples: 121
+      iap: 1
+      s41: 1
+      negotiation: 1
+      influence: 1
+      alexix: 1
+      ohanian: 1
+      reddit: 1
+      founder: 1
+      mit: 1
+      sat: 1
+      12/7: 1
+      paid: 1
+      sw: 1
+      dec: 1
+      /jan: 1
+      crowd: 1
+      comfort: 1
+      morgan: 1
+      stanley: 1
+      anatomy: 1
+      deal: 1
+      urop: 1
+      all-electronic: 1
+      protein: 1
+      boston-based: 1
+      technical: 1
+      intern: 1
+      federated: 1
+      wireless: 1
+      (no: 1
+      subject): 1
+      space: 1
+      optics: 2
+      adaptive: 1
+      associates: 1
+      xinetics: 1
+      full-time: 1
+      data: 1
+      scientist: 1
+      loci: 1
+      controls: 1
+      boston: 1
+    :total_tokens: 1552
+    :examples: 130
   external:
     :tokens:
       intern: 1
@@ -1384,7 +1471,7 @@ data:
       Time: 1
       Summer: 1
       Tutor: 1
-      for: 10
+      for: 11
       iOSgames: 1
       Program: 3
       Local: 1
@@ -1457,12 +1544,12 @@ data:
       Competition: 1
       Nomination: 1
       Deadline: 1
-      teh: 1
+      teh: 2
       MIT: 1
       Inspirational: 1
       Teacher: 1
       Award: 1
-      is: 1
+      is: 2
       '12': 1
       '16': 1
       Nano: 1
@@ -1470,8 +1557,15 @@ data:
       Research: 1
       Experience: 1
       Undergrads: 1
-    :total_tokens: 147
-    :examples: 16
+      nomination: 1
+      deadline: 1
+      mit: 1
+      inspirational: 1
+      teacher: 1
+      award: 1
+      12/16: 1
+    :total_tokens: 157
+    :examples: 17
   campus:
     :tokens:
       UROP: 1
