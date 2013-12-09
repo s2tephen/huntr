@@ -29,7 +29,7 @@
           </button>
           <ul class="dropdown-menu" role="menu">
             <%= @categories.each do |cat| %>
-              <li><%= link_to {:controller=>'listings', :action=>'search_results', :cat_filter => cat}, {remote: true} %></li>
+              <li><%= link_to cat, {:controller=>'listings', :action=>'search_results', :cat_filter => cat}, {remote: true} %></li>
             <% end %>
           </ul>
         </div>
