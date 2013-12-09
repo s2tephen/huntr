@@ -51,9 +51,12 @@
 		  display: table-cell;
       vertical-align: middle;
 		}
-		.fa-star {
-		  color: #FFFF99;
-		}
+		.fa-crosshairs {
+      color: #C8C8C8;
+      &.favorited {
+        color: rgba(255, 51, 51, 0.7);
+      }
+    }
 	}
 }
 
@@ -96,7 +99,7 @@
 }
 
 .listing-unread {
-	background-color: orange;
+	background-color: #FFCC66;
 }
 
 #favsbutton {

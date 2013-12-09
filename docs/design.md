@@ -32,7 +32,7 @@ Goals of Huntr include:
 ### Feature descriptions
 
 * **Up-to-date feed.** Huntr takes Anne Hunter’s emails and displays them in a simple stream of listings that highlight the most important information.
-* **Favorite listings.** Huntr allows you to favorite listings you’re interested in, and notifies you whenever updates are made to them.
+* **Favorite listings.** Huntr allows you to favorite listings you’re interested in, so you can identify them more easily.
 * **Calendar export.** Huntr lets you export interesting listings such as events for your organizational systems such as Google Calendar, iCal, and Outlook.
 * **Filter and search.** Huntr allows you to find the listings you’re interested in, based on predetermined categories or simple text search.
 

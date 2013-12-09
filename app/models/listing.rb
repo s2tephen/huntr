@@ -18,7 +18,7 @@ class Listing < ActiveRecord::Base
 
     unread_mail = Mail.find keys: ['NOT', 'SEEN']
     unread_mail.each do |m|
-      if m.sender != 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
+      if m.sender == 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
         Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
           begin
             l.body = m.parts[0].parts[0].decoded
@@ -27,7 +27,7 @@ class Listing < ActiveRecord::Base
           end
 
           is_event = false # is true if subject contains a valid date
-          date = l.name.match(/(?<= )\d{1,2}\/\d{1,2}/).to_s
+          date = l.name.match(/(?<= )1?\d\/\d{1,2}/).to_s
           if date.empty?
             if l.name.match(/today/i)
               date = Date.today.to_s
@@ -44,7 +44,7 @@ class Listing < ActiveRecord::Base
             end
 
             # date regex — returns two groupings: start time and (optionally) end time
-            time = l.name.match(/(?<= )(\d{1,2}(?!\/)(?::\d{2})?(?!\d)\s?(?:am|pm)?)(\s?-\s?\d{1,2}(?::\d{2})?(?!\d)\s?(?:am|pm)?)?/i)
+            time = l.name.match(/(?<= )(1?\d(?!\/)(?::\d{2})?(?!\d)\s?(?:am|pm)?)(\s?-\s?\d{1,2}(?::\d{2})?(?!\d)\s?(?:am|pm)?)?/i)
             if time.nil?
               l.start_time = date
               l.end_time = date

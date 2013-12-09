@@ -9,9 +9,9 @@
   </div>
   <div class="listing-favorite">
     <% if current_user.listings.include?(listing) %>
-      <i class="fa fa-lg fa-star listing-star listing-<%= listing.id %>" id='fav-button-<%= listing.id %>'></i>
+      <i class="fa fa-lg fa-crosshairs favorited listing-star listing-<%= listing.id %>" id='fav-button-<%= listing.id %>'></i>
     <% else %>
-      <i class="fa fa-lg fa-star-o listing-star listing-<%= listing.id %>" id='fav-button-<%= listing.id %>'></i>
+      <i class="fa fa-lg fa-crosshairs listing-star listing-<%= listing.id %>" id='fav-button-<%= listing.id %>'></i>
     <% end %>
   </div>
 </div>
