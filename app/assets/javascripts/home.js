@@ -61,7 +61,7 @@ var reloadListings = function() {
 var showListing = function() {
   var listingID = $(this).attr('id').split('-')[1];
   $('#listing').removeClass('listing-show').addClass('make_transist listing-hide');
-  $('#listing-'+listingID).removeClass('listing-unread');
+  $('#listing-'+listingID).parent().removeClass('listing-unread');
   setTimeout(function() {
     $.get( 'listings/' + listingID, function(data) {
       $('#listing').html(data);
