@@ -3,10 +3,9 @@
     <!-- Favorites summary -->
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 left-pane">
       <div class="row section-header">
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 header-text"><i class="fa fa-crosshairs"></i>  FAVORITES</div>
-        <% @has_favs = current_user.listings.length > 0 %>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <div class="rt-btn btn btn-default" id="favsbutton"><%= @has_favs ? 'hide' : 'show' %></div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 header-text"><i class="fa fa-crosshairs"></i> FAVORITES
+          <% @has_favs = current_user.listings.length > 0 %>
+          <div class="rt-btn btn btn-sm btn-default pull-right" id="favsbutton"><%= @has_favs ? 'hide' : 'show' %></div>
         </div>
       </div>
       <div class="row listing-container" style="<%= @has_favs ? '' : 'display:none' %>" id="favslist">
@@ -14,20 +13,25 @@
       </div>
       
       <div class="row section-header" name="listings">
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 header-text"><i class="fa fa-list"></i>  FEED</div>
-        <!-- Search listings form -->
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 input-group input-group-sm">
-          <span class="input-group-addon glyphicon glyphicon-search"></span>
-          <%= text_field_tag :query, params[:query], class: "form-control", id: 'search_field' %>
-        </div>
-        
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" id="category-filter" data-toggle="dropdown">Category <span class="caret"></span></button>
-          <ul class="dropdown-menu" role="menu">
-            <% @categories.each do |cat| %>
-              <li><span class="cat-filter"><%= cat %></span></li>
-            <% end %>
-          </ul>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 header-text">
+          <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+              <i class="fa fa-list"></i> FEED
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 input-group input-group-sm search">
+              <%= text_field_tag :query, params[:query], class: "form-control", id: 'search_field', placeholder: 'Search...' %>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+              <div class="btn-group pull-right">
+                <button type="button" class="btn btn-sm btn-default dropdown-toggle" id="category-filter" data-toggle="dropdown">Category <span class="caret"></span></button>
+                <ul class="dropdown-menu" role="menu">
+                  <% @categories.each do |cat| %>
+                    <li><span class="cat-filter"><%= cat %></span></li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       

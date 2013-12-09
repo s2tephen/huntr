@@ -17,10 +17,9 @@ Mail.defaults do
                             :enable_ssl => true }
 end
 
-# TODO: update this any time Listing.fetch is updated
 puts 'Seeding db — this could take a while!'
 
-# Naive Bayes classifier
+# naive bayes classifier
 nbayes = NBayes::Base.new
 event_vocab = ['talk', 'event', 'panel', 'infosession', 'conference', 'study break', 'speaker']
 external_opp_vocab = ['intern', 'interns', 'internship', 'internships', 'externship', 'externships', 'startup',
@@ -29,10 +28,14 @@ external_opp_vocab = ['intern', 'interns', 'internship', 'internships', 'externs
 campus_opp_vocab = ['urop', 'urops', 'ta', 'tas', 'grader', 'graders', 'uap', 'uaps', 'superurop', 'superurops',
   'apply', 'application', 'applications']
 
-nbayes.train(event_vocab, 'event')
-nbayes.train(external_opp_vocab, 'external')
-nbayes.train(campus_opp_vocab, 'campus')
+# seed the classifier
+100.times do
+  nbayes.train(event_vocab, 'event')
+  nbayes.train(external_opp_vocab, 'external')
+  nbayes.train(campus_opp_vocab, 'campus')
+end
 
+# read mail
 Mail.all.each do |m|
   if m.sender == 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
     Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
@@ -69,7 +72,11 @@ Mail.all.each do |m|
           l.all_day = true
         else
           if time[2].nil? # start time only
-            l.start_time = DateTime.parse(date + ' ' + time[1], :datetime)
+            if time[1].match(/am|pm/i).nil?
+              l.start_time = DateTime.parse(date + ' ' + time[1] + 'pm', :datetime) # assume pm when unspecified
+            else
+              l.start_time = DateTime.parse(date + ' ' + time[1], :datetime)
+            end
             l.end_time = l.start_time + 1.hour # default to 1 hour
           else # end time specified
             cleaned_end = time[2].split('-')[1].lstrip # remove leading hyphen/whitespace

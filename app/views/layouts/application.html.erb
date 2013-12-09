@@ -26,10 +26,15 @@
       </p>
     </nav>
     <% flash.each do |name, msg| %>
-      <div class="alert alert-<%= name %>"><%= msg %></div>
+      <% if name.to_s == 'alert' %>
+        <div class="alert alert-warning alert-dismissable">
+      <% else %>
+        <div class="alert alert-info alert-dismissable">
+      <% end %>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+        <%= msg %>
+      </div>
     <% end %>
-    <div class="notice"><%= notice %></div>
-    <%= debug(params) if Rails.env.development? %>
     <!-- Page content -->
     <%= yield %>
   </div>

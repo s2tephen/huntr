@@ -6,7 +6,15 @@ Huntr::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root :to => 'listings#index'
+  authenticated :user do
+    root to: "listings#index", as: :authenticated_root
+  end
+
+  devise_scope :user do
+    unauthenticated do
+      root to: "devise/sessions#new"
+    end
+  end
   
   match "search_results", to: "listings#search_results", via: :get
   match "favorites", to: "listings#favorites", via: :get

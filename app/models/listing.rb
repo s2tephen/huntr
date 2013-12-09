@@ -51,7 +51,11 @@ class Listing < ActiveRecord::Base
               l.all_day = true
             else
               if time[2].nil? # start time only
-                l.start_time = DateTime.parse(date + ' ' + time[1], :datetime)
+                if time[1].match(/am|pm/i).nil?
+                  l.start_time = DateTime.parse(date + ' ' + time[1] + 'pm', :datetime) # assume pm when unspecified
+                else
+                  l.start_time = DateTime.parse(date + ' ' + time[1], :datetime)
+                end
                 l.end_time = l.start_time + 1.hour # default to 1 hour
               else # end time specified
                 cleaned_end = time[2].split('-')[1].lstrip # remove leading hyphen/whitespace
@@ -74,7 +78,7 @@ class Listing < ActiveRecord::Base
             end
 
             # location parsing - very basic
-            l.location = l.name.match(/(?<= )[ENW]{0,2}\d{1,3}[A-G]?-\d{3,4}/).to_s
+            l.location = l.name.match(/(?<= )[ENW]{0,2}\d{1,3}[a-zA-Z]?-[a-zA-Z]?\d{3,4}/).to_s
             if l.location.empty? # other location names
               ['Student Center', 'Kresge', 'Walker Memorial', 'Religious Activities Center',
                'Lobby 13', 'MIT Chapel', 'Lobby 10', 'Wong Auditorium', 'Stata'].each do |loc|

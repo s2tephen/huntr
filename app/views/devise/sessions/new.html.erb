@@ -18,7 +18,7 @@
 
       <div class="form-actions">
         <%= f.button :submit, :value => "Sign in", :class => 'pull-left' %>
-        <%= button_to 'Forgot your password?', new_password_path(resource_name, method: :get), class: 'btn pull-left' %>
+        <%= link_to 'Forgot your password?', new_password_path(resource_name, method: :get), class: 'btn pull-left' %>
         <div class="checkbox">
           <%= f.input :remember_me, :wrapper => false, :as => :boolean if devise_mapping.rememberable? %>
         </div>
@@ -44,5 +44,11 @@
         <%= f.button :submit, "Sign up" %>
       </div>
     <% end %>
+  </div>
+</div>
+
+<div class='row footer'>
+  <div class='col-xs-12 col-sm-12 col-md-12 col-lg-12'>
+    <p>&copy; 2013 Huntr <span>•</span> Photo by Nietnagel <span><a href="http://www.flickr.com/photos/13382424@N00/4994366171/"><i class="fa fa-flickr"></i></a></span>
   </div>
 </div>
