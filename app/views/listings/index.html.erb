@@ -22,11 +22,11 @@
               <%= text_field_tag :query, params[:query], class: "form-control", id: 'search_field', placeholder: 'Search...' %>
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-              <div class="btn-group pull-right">
+              <div class="dropdown pull-right">
                 <button type="button" class="btn btn-sm btn-default dropdown-toggle" id="category-filter" data-toggle="dropdown">Category <span class="caret"></span></button>
                 <ul class="dropdown-menu" role="menu">
                   <% @categories.each do |cat| %>
-                    <li><span class="cat-filter"><%= cat %></span></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1"><span class="cat-filter"><%= cat %></span></a></li>
                   <% end %>
                 </ul>
               </div>
