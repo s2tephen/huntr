@@ -96,11 +96,11 @@ class Listing < ActiveRecord::Base
             if l.start_time.nil?
               result = nbayes.classify(tokens)
               l.category = result.max_class
+              nbayes.train(tokens, l.category)
             else
               result = 'event'
               l.category = 'event'
             end
-            nbayes.train(tokens, l.category)
           end
         end
       end
