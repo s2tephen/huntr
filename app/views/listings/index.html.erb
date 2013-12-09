@@ -42,7 +42,7 @@
       
       <!-- Page footer -->
       <div class="row footer">
-        &copy; 2013 Huntr <span>•</span> Anne Hunter has sent <%= pluralize(Listing.where(updated_at: Time.now.midnight..Time.now).length, 'email') %> today.
+        &copy; 2013 Huntr <span>•</span> Anne Hunter has sent <%= pluralize(Listing.where(updated_at: (Time.now.midnight + 5.hours)..(Time.now + 5.hours).length, 'email') %> today.
       </div>
     </div>
 
