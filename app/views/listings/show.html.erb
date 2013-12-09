@@ -15,6 +15,7 @@
     <% else %>
       <i class="fa fa-2x fa-crosshairs list-star listing-<%= @listing.id %>" id='fav-button-<%= @listing.id %>'></i>
     <% end %>
+    <span class="cat-label"><%= @listing.category %></span>
   </div>
   <div class="listing-sent"><em>Last updated: <%= @listing.updated_at.strftime("%B %e, %Y") %></em></div>
 </div>
