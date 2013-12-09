@@ -119,3 +119,8 @@ Mail.all.each do |m|
     end
   end
 end
+
+# save classifier
+File.open(File.join(Rails.root, 'db', 'nbayes.yml'), 'w') do |f|
+  f.write(nbayes.dump(nbayes))
+end

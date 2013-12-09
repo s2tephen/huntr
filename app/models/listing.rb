@@ -6,7 +6,7 @@ class Listing < ActiveRecord::Base
   # process emails, populate relevant fields
   # run by a scheduled rake task (via heroku scheduler)
   def self.fetch
-    require 'date'
+    nbayes = YAML.load(File.open(File.join(Rails.root, 'db', 'nbayes.yml'))) # load existing classifier
 
     Mail.defaults do
       retriever_method :imap, { :address    => 'imap.gmail.com',
@@ -84,9 +84,22 @@ class Listing < ActiveRecord::Base
 
           l.updated_at = m.date # use date/time of email
 
-          # TODO: category
+          # naive bayes classification
+          l.category = 'other'
+          unless l.name.nil?
+            tokens = l.name.gsub(/\W/, ' ').split(/ /)
+            result = nbayes.classify(tokens)
+            nbayes.train(tokens, result.max_class)
+            l.category = result.max_class
+            puts '   -> category: ' + l.category
+          end
         end
       end
+    end
+
+    # save classifier
+    File.open(File.join(Rails.root, 'db', 'nbayes.yml'), 'w') do |f|
+      f.write(nbayes.dump(nbayes))
     end
   end
   
