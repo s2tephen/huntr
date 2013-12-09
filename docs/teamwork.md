@@ -61,13 +61,12 @@ See tasks list [here](https://docs.google.com/spreadsheet/ccc?key=0AorjNO4_rSvxd
 
 * **User authentication.** Users will be able to sign up & log in with their @mit.edu emails.
 * **Up-to-date feed.** Huntr will display a feed of Anne Hunter’s recent emails. 
-* **Listing subscriptions.** Users will be able to subscribe to the listings that interest them.
-* **Google calendar export.** Users will be able to export listings as events to their Google calendars.
 * **Search.** Huntr will allow users to perform text search of the active listings. 
+* **Basic Statistic.** Huntr will show a single statistic (# of email sent today).
 
 ### Issues postponed
 * **Filtering.** Users will be able to filter the listings by predetermined categories.
 * **Calendar view.** Huntr will contain a calendar with all of the event listings.
-* **Other calendar export.** Huntr will be able to export listings as events to calendars other than Google calendar.
-* **Subscriptions notifications.** Huntr will notify the user if the listings they have subscribed to have been updated.
+* **Calendar export.** Huntr will be able to export listings as events to calendars such as Google Calendar and iCal.
+* **Vaorites & Notifications.** Huntr will let users favorite listings and notify visually if the listings they have subscribed to have been updated.
 * **Huntr statistics.** Huntr will display interesting statistics about Anne Hunter’s emails at the bottom of the page.

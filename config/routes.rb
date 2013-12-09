@@ -17,5 +17,9 @@ Huntr::Application.routes.draw do
 
   # blacklist controller method
   #get 'blacklist/:confirmation_token', to: 'confirmations#blacklist'
-  match 'blacklist', to: 'confirmations#blacklist', via: :get
+  #match 'blacklist', to: 'users/confirmations#blacklist', via: :get
+
+  devise_scope :user do
+    get 'blacklist' => 'users/confirmations#blacklist'
+  end
 end

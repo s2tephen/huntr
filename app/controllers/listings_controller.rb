@@ -26,11 +26,6 @@ class ListingsController < ApplicationController
     render :layout => false
   end
 
-  # GET /listings/new
-  def new
-    @listing = Listing.new
-  end
-
   # POST /listings
   # POST /listings.json
   def create
