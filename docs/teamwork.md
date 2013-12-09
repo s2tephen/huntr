@@ -38,7 +38,7 @@ See tasks list [here](https://docs.google.com/spreadsheet/ccc?key=0AorjNO4_rSvxd
   → Notify admin / back-up email
 
 * Unauthorized access  
-  → Require user registration with @mit address
+  → Require user registration with @mit address & verifies with email confirmation
 
 ### Implementation
 
@@ -68,7 +68,7 @@ See tasks list [here](https://docs.google.com/spreadsheet/ccc?key=0AorjNO4_rSvxd
 * **Filtering.** Users will be able to filter the listings by predetermined categories.
 * **Calendar view.** Huntr will contain a calendar with all of the event listings.
 * **Calendar export.** Huntr will be able to export listings as events to calendars such as Google Calendar and iCal.
-* **Vaorites & Notifications.** Huntr will let users favorite listings and notify visually if the listings they have subscribed to have been updated.
+* **Favorites** Huntr will let users favorite listings and display them in a separate panel, as well as mark them on the calendar.
 * **Huntr statistics.** Huntr will display interesting statistics about Anne Hunter’s emails at the bottom of the page.
 
 
