@@ -3,7 +3,6 @@ $(document).ready(function() {
   $('#favsbutton').click(showHideFavs);
   
   $('#search_field').keydown(function(e){
-    console.log(e);
     if (e.keyCode == 13) {
       var selCategory = $('#category-filter').text().trim();
       selCategory = selCategory === "Category" ? null : selCategory;

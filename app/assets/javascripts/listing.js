@@ -4,6 +4,7 @@ $(document).ready(function() {
   
   // Shows calendar, hides listing
   $('#view-cal').click(function(){
+    $('#listing').html('');
     $('#listing').removeClass('listing-show').addClass('make_transist').addClass('listing-hide');
     $('#calendar').show();
   });
