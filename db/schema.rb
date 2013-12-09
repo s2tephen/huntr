@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208152150) do
+ActiveRecord::Schema.define(version: 20131208194415) do
 
   create_table "favorites", force: true do |t|
     t.datetime "created_at"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20131208152150) do
     t.string   "query"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.boolean  "all_day"
   end
 
   create_table "users", force: true do |t|
