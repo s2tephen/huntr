@@ -20,7 +20,7 @@ Goals of Huntr include:
 
 * An **email** is a message from Anne Hunter.
 * A **listing** is a processed email. Listings with a date/time are called **events**.
-* A user can **filter** the listings by **category**, which are chosen from predetermined categories including events, internships, announcements, etc.
+* A user can **filter** the listings by **category**, which are chosen from predetermined categories including events, external opportunities, and campus opportunities.
 * A user can **search** the text of the listings for a desired string.
 * A user can **favorite** listings of interest for easy access.
 
@@ -33,7 +33,7 @@ Goals of Huntr include:
 
 * **Up-to-date feed.** Huntr takes Anne Hunter’s emails and displays them in a simple stream of listings that highlight the most important information.
 * **Favorite listings.** Huntr allows you to favorite listings you’re interested in, and notifies you whenever updates are made to them.
-* **Calendar export.** Huntr lets you export interesting listings as events for your organizational systems such as Google Calendar.
+* **Calendar export.** Huntr lets you export interesting listings such as events for your organizational systems such as Google Calendar, iCal, and Outlook.
 * **Filter and search.** Huntr allows you to find the listings you’re interested in, based on predetermined categories or simple text search.
 
 ### Security concerns
@@ -98,6 +98,7 @@ Goals of Huntr include:
     * Will manually categorize some emails to train nbayes.
     * Any listing with a “time” will be considered an event (top layer), then we can search for keywords such as “deadline” or “apply” for jobs, and similarly for announcements and updates.
     * There will be an “other” category for listings that do not match any levels in the categorizer.
+  * Further challenge - nbayes categorizer currently does not perform well due to lack of training data. The categorizer will improve as more data are collected.
 
 * Querying listings
   * Problem: Queries can be performed on predefined categories or listing metadata or keyword search. How much freedom should the users get? Can users query on conditions?
