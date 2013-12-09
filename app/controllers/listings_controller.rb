@@ -10,7 +10,9 @@ class ListingsController < ApplicationController
     @listings = Listing.order(updated_at: :desc)
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @month_listings = Listing.where('extract(month from updated_at) = ? AND extract(year from updated_at) = ?', 
-      @date.month, @date.year)
+      @date.month, @date.year).order(start_time: :asc)
+    @month_listings = @month_listings.where.not(start_time: nil)
+    @categories = ['Event', '', '', '']
   end
   
   # GET /listings/1
@@ -56,7 +58,8 @@ class ListingsController < ApplicationController
   def cal
     @date = params[:month] ? Date.parse(params[:month]) : Date.today
     @month_listings = Listing.where('extract(month from updated_at) = ? AND extract(year from updated_at) = ?', 
-      @date.month, @date.year).order(updated_at: :asc)
+      @date.month, @date.year).order(start_time: :asc)
+    @month_listings = @month_listings.where.not(start_time: nil)
     render :layout => false
   end
 
