@@ -12,6 +12,7 @@ class ListingsController < ApplicationController
     @month_listings = Listing.where('extract(month from updated_at) = ? AND extract(year from updated_at) = ?', 
       @date.month, @date.year).order(start_time: :asc)
     @month_listings = @month_listings.where.not(start_time: nil)
+    @categories = ['Event', '', '', '']
   end
   
   # GET /listings/1

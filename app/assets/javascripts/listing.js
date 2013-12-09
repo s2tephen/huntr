@@ -47,5 +47,5 @@ var makeMap = function() {
 };
 
 var showNoMap = function() {
-  $('#location-map').html("No map available for this location");
+  $('#location-map').addClass("empty-map").html("No map available for this location");
 };

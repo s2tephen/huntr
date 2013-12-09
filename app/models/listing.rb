@@ -31,11 +31,9 @@ class Listing < ActiveRecord::Base
             if l.name.match(/today/i)
               date = Date.today.to_s
               is_event = true
-              l.all_day = true
             end
           else
             is_event = true
-            l.all_day = true
           end
 
           if is_event
@@ -46,7 +44,11 @@ class Listing < ActiveRecord::Base
 
             # date regex — returns two groupings: start time and (optionally) end time
             time = l.name.match(/(?<= )(\d{1,2}(?!\/)(?::\d{2})?(?!\d)\s?(?:am|pm)?)(\s?-\s?\d{1,2}(?::\d{2})?(?!\d)\s?(?:am|pm)?)?/i)
-            unless time.nil?
+            if time.nil?
+              l.start_time = date
+              l.end_time = date
+              l.all_day = true
+            else
               if time[2].nil? # start time only
                 l.start_time = DateTime.parse(date + ' ' + time[1], :datetime)
                 l.end_time = l.start_time + 1.hour # default to 1 hour
