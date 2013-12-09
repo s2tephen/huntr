@@ -59,16 +59,20 @@ See tasks list [here](https://docs.google.com/spreadsheet/ccc?key=0AorjNO4_rSvxd
 ## Minimum Viable Product (MVP)
 ### Subset of features to be included
 
-* **User authentication.** Users will be able to sign up & log in with their @mit.edu emails.
-* **Up-to-date feed.** Huntr will display a feed of Anne Hunter’s recent emails. 
-* **Search.** Huntr will allow users to perform text search of the active listings. 
-* **Basic Statistic.** Huntr will show a single statistic (# of email sent today).
+* **User authentication.** Users can sign up & log in with their @mit.edu emails.
+* **Up-to-date feed.** Huntr displays a feed of Anne Hunter’s recent emails. 
+* **Search.** Huntr allows users to perform text search of the active listings. 
+* **Basic Statistic.** Huntr shows a single statistic (# of email sent today).
 
-### Issues postponed
-* **Filtering.** Users will be able to filter the listings by predetermined categories.
-* **Calendar view.** Huntr will contain a calendar with all of the event listings.
-* **Calendar export.** Huntr will be able to export listings as events to calendars such as Google Calendar and iCal.
-* **Favorites** Huntr will let users favorite listings and display them in a separate panel, as well as mark them on the calendar.
+### Additional Features
+* **Filtering.** Users is able to filter the listings by predetermined categories.
+* **Calendar view.** Huntr contains a calendar with all of the event listings.
+* **Calendar export.** Huntr is able to export listings as events to calendars such as Google Calendar and iCal.
+* **Map.** Huntr displays a map for events that have a detected location.
+* **Favorites** Huntr lets users favorite listings and display them in a separate panel, as well as mark them on the calendar.
+
+### Coming soon
+* **Listing Updates.** Huntr will update listings when Anne Hunter sends additional emails about the same topic intead of creating a new listing.  Users will be notified visually if this listing is favorited.
 * **Huntr statistics.** Huntr will display interesting statistics about Anne Hunter’s emails at the bottom of the page.
 
 
