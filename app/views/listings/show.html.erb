@@ -12,9 +12,9 @@
   <div class="listing-name"><h2><%= @listing.name %></h2></div>
   <div class="listing-star">
     <% if current_user.listings.include?(@listing) %>
-      <i class="fa fa-2x fa-star list-star listing-<%= @listing.id %>" id='fav-button-<%= @listing.id %>'></i>
+      <i class="fa fa-2x fa-crosshairs favorited list-star listing-<%= @listing.id %>" id='fav-button-<%= @listing.id %>'></i>
     <% else %>
-      <i class="fa fa-2x fa-star-o list-star listing-<%= @listing.id %>" id='fav-button-<%= @listing.id %>'></i>
+      <i class="fa fa-2x fa-crosshairs list-star listing-<%= @listing.id %>" id='fav-button-<%= @listing.id %>'></i>
     <% end %>
   </div>
   <div class="listing-sent"><em>Last updated: <%= @listing.updated_at.strftime("%B %e, %Y") %></em></div>

@@ -74,7 +74,7 @@ var showListing = function() {
 
 // Toggles the color of all the favorite buttons for a listing
 var updateStar = function(listingID) {
-  $('.listing-'+listingID).toggleClass('fa-star fa-star-o');
+  $('.listing-'+listingID).toggleClass('favorited');
   $('#calendar #listing-'+listingID).toggleClass('favorited');
 };
 
