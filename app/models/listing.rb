@@ -98,6 +98,7 @@ class Listing < ActiveRecord::Base
               l.category = result.max_class
             else
               result = 'event'
+              l.category = 'event'
             end
             nbayes.train(tokens, l.category)
           end

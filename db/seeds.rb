@@ -123,6 +123,7 @@ Mail.all.each do |m|
           l.category = result.max_class
         else
           result = 'event'
+          l.category = 'event'
         end
         nbayes.train(tokens, l.category)
         puts '   -> category: ' + l.category
