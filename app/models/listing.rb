@@ -19,9 +19,6 @@ class Listing < ActiveRecord::Base
     unread_mail = Mail.find keys: ['NOT', 'SEEN']
     unread_mail.each do |m|
       if m.sender == 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
-        if m.subject[21..-1]).match(/(correction|change)/i)
-
-        end
         Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
           begin
             l.body = m.parts[0].parts[0].decoded
