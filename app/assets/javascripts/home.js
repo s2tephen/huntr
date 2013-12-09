@@ -2,9 +2,32 @@ $(document).ready(function() {
   // Show/hide favorites button
   $('#favsbutton').click(showHideFavs);
   
-  // AJAX call for search results
-  $(document).on('ajax:success', '#search_results', function(e, data, status, xhr){
-    $('#feedlist').html(xhr.responseText);
+  $('#search_field').keydown(function(e){
+    console.log(e);
+    if (e.keyCode == 13) {
+      var selCategory = $('#category-filter').text().trim();
+      selCategory = selCategory === "Category" ? null : selCategory;
+      var queryText = $('#search_field').val();
+      $.ajax({
+        type: "get",
+        url: 'search_results',
+        data: {category: selCategory, query: queryText},
+        success: renderSearchResults
+      });
+    }
+  });
+  
+  $(".dropdown-menu li span").click(function(){
+    var selCategory = $(this).text();
+    var queryText = $('#search_field').val();
+    $('#category-filter').html(selCategory+' <span class="caret"></span>');
+    $("#category-filter").dropdown("toggle");
+    $.ajax({
+      type: "get",
+      url: 'search_results',
+      data: {category: selCategory, query: queryText},
+      success: renderSearchResults
+    });
   });
 });
 
@@ -64,4 +87,8 @@ var showHideFavs = function() {
     $('#favslist').slideDown();
     $(this).text('hide');
   }
+};
+
+var renderSearchResults = function(htmlResult){
+  $('#feedlist').html(htmlResult);
 };

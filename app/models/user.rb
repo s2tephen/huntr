@@ -29,8 +29,8 @@ class User < ActiveRecord::Base
   # returns relevant_listings
   def query_listings(category, query)
     @relevant_listings = Listing.all
-    if category
-      @relevant_listings = @relevant_listings.where(:category => category)
+    if category and category.length > 0
+      @relevant_listings = @relevant_listings.where(:category => category.downcase)
     end
     if query and query.length > 0
       @relevant_listings = @relevant_listings.basic_search(query)

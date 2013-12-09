@@ -15,21 +15,16 @@
       <div class="row section-header" name="listings">
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 header-text"><i class="fa fa-list"></i>  FEED</div>
         <!-- Search listings form -->
-        <%= form_tag url_for(:controller => 'listings', :action => 'search_results'), 
-          :method => :get, :remote=>true, :id => 'search_results' do  %>
-          <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 input-group input-group-sm">
-            <span class="input-group-addon glyphicon glyphicon-search"></span>
-            <%= text_field_tag :query, params[:query], class: "form-control" %>
-          </div>
-        <% end %>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 input-group input-group-sm">
+          <span class="input-group-addon glyphicon glyphicon-search"></span>
+          <%= text_field_tag :query, params[:query], class: "form-control", id: 'search_field' %>
+        </div>
         
-        <div class="btn-group">
-          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            Category <span class="caret"></span>
-          </button>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" id="category-filter" data-toggle="dropdown">Category <span class="caret"></span></button>
           <ul class="dropdown-menu" role="menu">
-            <%= @categories.each do |cat| %>
-              <li><%= link_to cat, {:controller=>'listings', :action=>'search_results', :cat_filter => cat}, {remote: true} %></li>
+            <% @categories.each do |cat| %>
+              <li><span class="cat-filter"><%= cat %></span></li>
             <% end %>
           </ul>
         </div>
