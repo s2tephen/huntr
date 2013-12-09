@@ -53,3 +53,29 @@
   float: right;
   margin-top: 6px;
 }
+
+.listing-sent {
+  margin: -10px 0 10px;
+  font-size: 1.6em;
+}
+
+.listing-event-details {
+  margin-top: 20px;
+  font-size: 1.4em;
+}
+
+.details-label {
+  font-weight: bold;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.empty-map {
+  font-weight: bold;
+  text-align: center;
+  padding: 30px 20px;
+  border: 1px solid #999;
+  background-color: rgba(255, 255, 255, .7);
+}

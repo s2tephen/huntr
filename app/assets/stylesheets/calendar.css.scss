@@ -2,7 +2,6 @@
   border-collapse: collapse;
   width: 100%;
   table-layout: fixed;
-  overflow:hidden; 
   white-space: nowrap;
 }
 
@@ -24,7 +23,7 @@
 #calendar td {
   background: #FFF;
   color: #777;
-  height: 80px;
+  height: 100px;
   vertical-align: top;
   font-size: 16px;
 }

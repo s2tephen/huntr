@@ -42,9 +42,13 @@ class Listing < ActiveRecord::Base
               date = (DateTime.parse(date) + 1.year).to_date.to_s
             end
 
-            # dat regex — returns two groupings: start time and (optionally) end time
+            # date regex — returns two groupings: start time and (optionally) end time
             time = l.name.match(/(?<= )(\d{1,2}(?!\/)(?::\d{2})?(?!\d)\s?(?:am|pm)?)(\s?-\s?\d{1,2}(?::\d{2})?(?!\d)\s?(?:am|pm)?)?/i)
-            unless time.nil?
+            if time.nil?
+              l.start_time = date
+              l.end_time = date
+              l.all_day = true
+            else
               if time[2].nil? # start time only
                 l.start_time = DateTime.parse(date + ' ' + time[1], :datetime)
                 l.end_time = l.start_time + 1.hour # default to 1 hour
@@ -65,6 +69,7 @@ class Listing < ActiveRecord::Base
               # timezone shift
               l.start_time += 5.hours
               l.end_time += 5.hours
+              l.all_day = false
             end
 
             # location parsing - very basic
