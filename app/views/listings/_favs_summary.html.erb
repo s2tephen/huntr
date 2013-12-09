@@ -1,5 +1,5 @@
 <% @fav_listings.each do |listing| %>
-  <% if Favorite.where(:user == current_user, :listing == listing) %>
+  <% if current_user.favorites.find_by_listing_id(listing.id).read %>
     <div class="col-md-12 btn btn-default listing-area">
   <% else %>
     <div class="col-md-12 btn btn-default listing-area listing-unread">

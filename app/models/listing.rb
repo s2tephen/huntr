@@ -6,7 +6,7 @@ class Listing < ActiveRecord::Base
   # process emails, populate relevant fields
   # run by a scheduled rake task (via heroku scheduler)
   def self.fetch
-    nbayes = YAML.load(File.open(File.join(Rails.root, 'db', 'nbayes.yml'))) # load existing classifier
+    nbayes = NBayes::Base.from(File.open(File.join(Rails.root, 'db', 'nbayes.yml'))) # load existing classifier
 
     Mail.defaults do
       retriever_method :imap, { :address    => 'imap.gmail.com',
@@ -16,8 +16,9 @@ class Listing < ActiveRecord::Base
                                 :enable_ssl => true }
     end
 
-    Mail.find keys: ['NOT', 'SEEN'].each do |m|
-      if m.sender == 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
+    unread_mail = Mail.find keys: ['NOT', 'SEEN']
+    unread_mail.each do |m|
+      if m.sender != 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
         Listing.find_or_create_by(name: m.subject[21..-1]) do |l|
           begin
             l.body = m.parts[0].parts[0].decoded
@@ -87,7 +88,8 @@ class Listing < ActiveRecord::Base
           # naive bayes classification
           l.category = 'other'
           unless l.name.nil?
-            tokens = l.name.gsub(/\W/, ' ').split(/ /)
+            tokens = l.name.gsub(/\.|,|:|!/, ' ').split(/ /).map(&:downcase)
+
             result = nbayes.classify(tokens)
             nbayes.train(tokens, result.max_class)
             l.category = result.max_class

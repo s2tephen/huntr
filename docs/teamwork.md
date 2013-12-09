@@ -70,3 +70,11 @@ See tasks list [here](https://docs.google.com/spreadsheet/ccc?key=0AorjNO4_rSvxd
 * **Calendar export.** Huntr will be able to export listings as events to calendars such as Google Calendar and iCal.
 * **Vaorites & Notifications.** Huntr will let users favorite listings and notify visually if the listings they have subscribed to have been updated.
 * **Huntr statistics.** Huntr will display interesting statistics about Anne Hunter’s emails at the bottom of the page.
+
+
+## Team Contract
+see contract [here](https://docs.google.com/document/d/1GRtc1o18b_x63Y_GO6GwKTbj-nyYCq7IRZHIs9lGkWQ/edit?usp=drive_web)
+
+## Meetings
+see meeting agenda and minutes [here](https://drive.google.com/?tab=mo&authuser=0#folders/0B4rjNO4_rSvxQThweVNCczB4Vnc)
+Progress report are located together with tasks [here](https://docs.google.com/spreadsheet/ccc?key=0AorjNO4_rSvxdEs2cEp4ajlWSVZrdDhEUVRQUHFDa1E&usp=drive_web#gid=0)
