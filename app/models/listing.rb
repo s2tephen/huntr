@@ -93,7 +93,7 @@ class Listing < ActiveRecord::Base
           l.category = 'other'
           unless l.name.nil?
             tokens = l.name.gsub(/\.|,|:|!/, ' ').split(/ /).map(&:downcase)
-            if l.start_time.empty?
+            if l.start_time.nil?
               result = nbayes.classify(tokens)
               l.category = result.max_class
             else
