@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208194415) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20131209044857) do
 
   create_table "favorites", force: true do |t|
     t.datetime "created_at"
@@ -31,7 +28,6 @@ ActiveRecord::Schema.define(version: 20131208194415) do
     t.string   "category"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "food"
     t.string   "query"
     t.datetime "start_time"
     t.datetime "end_time"
