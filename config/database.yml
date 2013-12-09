@@ -8,8 +8,8 @@ development:
   database: db_development
   host: localhost
   encoding: UTF8
-  username: <%= ENV["DB_USERNAME"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
+  username: huntr
+  password: ys.js6170
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,5 +19,5 @@ test:
   database: db_test
   host: localhost
   encoding: UTF8
-  username: <%= ENV["DB_USERNAME"] %>
-  password: <%= ENV["DB_PASSWORD"] %>
+  username: huntr
+  password: ys.js6170
