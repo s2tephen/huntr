@@ -30,7 +30,7 @@ class Listing < ActiveRecord::Base
           date = l.name.match(/(?<= )1?\d\/\d{1,2}/).to_s
           if date.empty?
             if l.name.match(/today/i)
-              date = Date.today.to_s
+              date = m.date.to_date.to_s
               is_event = true
             end
           else
