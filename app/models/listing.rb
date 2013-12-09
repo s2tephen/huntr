@@ -93,7 +93,6 @@ class Listing < ActiveRecord::Base
             result = nbayes.classify(tokens)
             nbayes.train(tokens, result.max_class)
             l.category = result.max_class
-            puts '   -> category: ' + l.category
           end
         end
       end
