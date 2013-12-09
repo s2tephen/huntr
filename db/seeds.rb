@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 require 'mail'
+require 'nbayes'
 
 Mail.defaults do
   retriever_method :imap, { :address    => 'imap.gmail.com',
@@ -18,6 +19,19 @@ end
 
 # TODO: update this any time Listing.fetch is updated
 puts 'Seeding db — this could take a while!'
+
+# Naive Bayes classifier
+nbayes = NBayes::Base.new
+event_vocab = ['talk', 'event', 'panel', 'infosession', 'conference', 'study break', 'speaker']
+external_opp_vocab = ['intern', 'interns', 'internship', 'internships', 'externship', 'externships', 'startup',
+  'fellowship', 'fellowships', 'job', 'jobs', 'opportunity', 'part-time', 'full-time', 'program', 'apply',
+  'application', 'applications', 'developer', 'developers', 'engineer', 'engineers', 'position', 'positions']
+campus_opp_vocab = ['UROP', 'UROPs', 'TA', 'TAs', 'grader', 'graders', 'UAP', 'UAPs', 'SuperUROP', 'SuperUROPs',
+  'apply', 'application', 'applications']
+
+nbayes.train(event_vocab, 'event')
+nbayes.train(external_opp_vocab, 'external')
+nbayes.train(campus_opp_vocab, 'campus')
 
 Mail.all.each do |m|
   if m.sender == 'eecs-jobs-announce-bounces@lists.csail.mit.edu' # only accept emails from mailman list
@@ -87,8 +101,15 @@ Mail.all.each do |m|
 
       l.updated_at = m.date # use date/time of email
 
-      # TODO: category
-      # TODO: food
+      # naive bayes classification
+      l.category = 'other'
+      unless l.name.nil?
+        tokens = l.name.gsub(/\W/, ' ').split(/ /)
+        result = nbayes.classify(tokens)
+        nbayes.train(tokens, result.max_class)
+        l.category = result.max_class
+        puts '   -> category: ' + l.category
+      end
     end
   end
 end
