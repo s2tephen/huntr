@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable
 
   # Only allow mit.edu addresses
-  validates_format_of :email, :with => /\A([^@\s]+)@([A-z].)?(mit.edu)\Z/, :on => :create
+  validates_format_of :email, :with => /\A([^@\s]+)@([A-z].)?(mit.edu)\Z/i, :on => :create
 
   has_many :favorites
   has_many :listings, through: :favorites

@@ -1,9 +1,7 @@
 <p>Welcome <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>Thanks for signing up for Huntr.  You can confirm your email account through the link below to start using Huntr:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @token) %></p>
 
-<p>If you didn't register for this service, click the link below to opt-out:</p>
-
-<p><%= link_to 'Cancel my account', blacklist_path(@resource, :confirmation_token => @token) %></p>
+<p>If you didn't register for this service, please disregard this email. Your account will be blocked from registering for 24 hours.</p>

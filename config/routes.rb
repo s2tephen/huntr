@@ -1,5 +1,5 @@
 Huntr::Application.routes.draw do
-  devise_for :users, :controllers => { :confirmations => "users/confirmations", :registrations => "users/registrations" }
+  devise_for :users
   resources :listings
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -13,13 +13,6 @@ Huntr::Application.routes.draw do
   match "cal", to: "listings#cal", via: :get
 
   # redirect non-existent pages to root
-  #get '*path' => redirect('/')
+  get '*path' => redirect('/')
 
-  # blacklist controller method
-  #get 'blacklist/:confirmation_token', to: 'confirmations#blacklist'
-  #match 'blacklist', to: 'users/confirmations#blacklist', via: :get
-
-  devise_scope :user do
-    get 'blacklist' => 'users/confirmations#blacklist'
-  end
 end
