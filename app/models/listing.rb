@@ -93,10 +93,13 @@ class Listing < ActiveRecord::Base
           l.category = 'other'
           unless l.name.nil?
             tokens = l.name.gsub(/\.|,|:|!/, ' ').split(/ /).map(&:downcase)
-
-            result = nbayes.classify(tokens)
-            nbayes.train(tokens, result.max_class)
-            l.category = result.max_class
+            if l.date.nil? && l.start_time.nil?
+              result = nbayes.classify(tokens)
+              l.category = result.max_class
+            else
+              result = 'event'
+            end
+            nbayes.train(tokens, l.category)
           end
         end
       end

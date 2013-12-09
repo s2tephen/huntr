@@ -21,7 +21,7 @@ puts 'Seeding db — this could take a while!'
 
 # naive bayes classifier
 nbayes = NBayes::Base.new
-event_vocab = ['talk', 'event', 'panel', 'infosession', 'conference', 'study break', 'speaker']
+# event_vocab = ['talk', 'event', 'panel', 'infosession', 'conference', 'study break', 'speaker']
 external_opp_vocab = ['intern', 'interns', 'internship', 'internships', 'externship', 'externships', 'startup',
   'fellowship', 'fellowships', 'job', 'jobs', 'opportunity', 'part-time', 'full-time', 'program', 'apply',
   'application', 'applications', 'developer', 'developers', 'engineer', 'engineers', 'position', 'positions']
@@ -30,7 +30,7 @@ campus_opp_vocab = ['urop', 'urops', 'ta', 'tas', 'grader', 'graders', 'uap', 'u
 
 # seed the classifier
 100.times do
-  nbayes.train(event_vocab, 'event')
+  # nbayes.train(event_vocab, 'event')
   nbayes.train(external_opp_vocab, 'external')
   nbayes.train(campus_opp_vocab, 'campus')
 end
@@ -118,9 +118,13 @@ Mail.all.each do |m|
       l.category = 'other'
       unless l.name.nil?
         tokens = l.name.gsub(/\.|,|:|!/, ' ').split(/ /).map(&:downcase)
-        result = nbayes.classify(tokens)
-        nbayes.train(tokens, result.max_class)
-        l.category = result.max_class
+        if l.date.nil? && l.start_time.nil?
+          result = nbayes.classify(tokens)
+          l.category = result.max_class
+        else
+          result = 'event'
+        end
+        nbayes.train(tokens, l.category)
         puts '   -> category: ' + l.category
       end
     end
