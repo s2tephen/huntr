@@ -63,7 +63,11 @@ Mail.all.each do |m|
 
         # dat regex — returns two groupings: start time and (optionally) end time
         time = l.name.match(/(?<= )(\d{1,2}(?!\/)(?::\d{2})?(?!\d)\s?(?:am|pm)?)(\s?-\s?\d{1,2}(?::\d{2})?(?!\d)\s?(?:am|pm)?)?/i)
-        unless time.nil?
+        if time.nil?
+          l.start_time = date
+          l.end_time = date
+          l.all_day = true
+        else
           if time[2].nil? # start time only
             l.start_time = DateTime.parse(date + ' ' + time[1], :datetime)
             l.end_time = l.start_time + 1.hour # default to 1 hour
@@ -84,9 +88,11 @@ Mail.all.each do |m|
           # timezone shift
           l.start_time += 5.hours
           l.end_time += 5.hours
-          puts '   -> start_time: ' + l.start_time.strftime("%I:%M%p") unless l.start_time.nil?
-          puts '   -> end_time: ' + l.end_time.strftime("%I:%M%p") unless l.end_time.nil?
+          l.all_day = false
         end
+        puts '   -> start_time: ' + l.start_time.strftime("%I:%M%p") unless l.start_time.nil?
+        puts '   -> end_time: ' + l.end_time.strftime("%I:%M%p") unless l.end_time.nil?
+        puts '   -> all_day: ' + l.all_day.to_s
 
         # location parsing - very basic
         l.location = l.name.match(/(?<= )[ENW]{0,2}\d{1,3}[A-G]?-\d{3,4}/).to_s
