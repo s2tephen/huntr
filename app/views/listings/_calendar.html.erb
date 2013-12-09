@@ -10,7 +10,7 @@
     <ul>
       <% for listing in month_listings %>
         <% @time_format = listing.start_time.strftime('%M') == '00' ? '%l %p':'%l:%M %p' %>
-        <li class="listing-bullet" id="listing-<%= listing.id %>"><span class="details-label"><%= listing.start_time.strftime(@time_format) %></span> <%= h(listing.name) %></li>
+        <li class="listing-bullet <%= current_user.listings.include?(listing) ? 'favorited' : '' %>" id="listing-<%= listing.id %>"><span class="details-label"><%= listing.start_time.strftime(@time_format) %></span> <%= h(listing.name) %></li>
       <% end %>
     </ul>
   <% end %>

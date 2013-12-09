@@ -64,6 +64,9 @@
   overflow:hidden;
   text-align: left;
   text-overflow: ellipsis;
-  background-color: #FFFF66;
+  background-color: rgba(51, 204, 102, 0.5);
   border-radius: 2px;
+  &.favorited {
+    background-color: #FFFF66;
+  }
 }

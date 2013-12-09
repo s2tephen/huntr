@@ -85,7 +85,6 @@ class Listing < ActiveRecord::Base
           l.updated_at = m.date # use date/time of email
 
           # TODO: category
-          # TODO: food
         end
       end
     end
