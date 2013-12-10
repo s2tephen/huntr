@@ -80,8 +80,8 @@ See tasks list [here](https://docs.google.com/spreadsheet/ccc?key=0AorjNO4_rSvxd
 see contract [here](https://docs.google.com/document/d/1GRtc1o18b_x63Y_GO6GwKTbj-nyYCq7IRZHIs9lGkWQ/edit?usp=drive_web)
 
 ## Meetings
-see meeting agenda and minutes [here](https://drive.google.com/?tab=mo&authuser=0#folders/0B4rjNO4_rSvxQThweVNCczB4Vnc)
-Progress report are located together with tasks [here](https://docs.google.com/spreadsheet/ccc?key=0AorjNO4_rSvxdEs2cEp4ajlWSVZrdDhEUVRQUHFDa1E&usp=drive_web#gid=0)
+*see meeting agenda and minutes [here](https://drive.google.com/?tab=mo&authuser=0#folders/0B4rjNO4_rSvxQThweVNCczB4Vnc)
+*Progress report are located together with tasks [here](https://docs.google.com/spreadsheet/ccc?key=0AorjNO4_rSvxdEs2cEp4ajlWSVZrdDhEUVRQUHFDa1E&usp=drive_web#gid=0)
 
 ## Reflection
 Team reflection is located [here](https://docs.google.com/document/d/1j5-5uJGhqXMIYagwa9RF0WLrDILFGAyn0gDAZW8bSr4/edit)
