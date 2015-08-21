@@ -76,11 +76,11 @@ Goals of Huntr include:
 
 #### User workflow
 
-![User workflow](img/wireframe_flow.png)
+![User workflow](docs/img/wireframe_flow.png)
 
 #### Page layout
-![Login page](img/wireframe_login.png)
-![Main page](img/wireframe_main.png)
+![Login page](docs/img/wireframe_login.png)
+![Main page](docs/img/wireframe_main.png)
 
 ## Challenges
 * Displaying listings on feed
